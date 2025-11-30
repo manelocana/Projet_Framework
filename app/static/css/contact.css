@@ -65,12 +65,13 @@ form textarea {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        height: 90vh;
         background-image: linear-gradient(
             rgb(0,0,0,0.1),
             rgb(0,0,0,1)
-            )
-            ,url("../img/devs_hablando.jpeg");
+            ) ,url("../img/devs_hablando.jpeg");
         background-position: center;
+        background-size: cover;
     }
 
     .hero .container {
