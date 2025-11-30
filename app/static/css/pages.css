@@ -1,5 +1,28 @@
 
 
+.hero_pages .container {
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+
+.hero_pages img {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+#pages_green_img .container{
+    text-align: center;
+}
+
+#pages_green_img img {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+
 @media(min-width: 768px) {
     .hero_pages {
         display: flex;
