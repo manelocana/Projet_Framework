@@ -46,4 +46,8 @@
         margin: 40px;
     }
 
+    .blog_card img {
+        width: 60%;
+    }
+
 }
