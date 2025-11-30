@@ -1,10 +1,53 @@
 
 {% extends 'index.html' %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
+{% endblock %}
+
 
 {% block content %}
 
-<p>ici le blog</p>
+    <section id="blog" class="blog_section">
+
+        <div class="container">
+            <h2>BLOG</h2>
+
+            <div class="blog_container">
+
+                <div class="blog_card">
+                    <img src="{{ url_for('static', filename='img/blog1.jpg') }}" alt="Blog 1">
+                    <h3>Title article 1</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae eveniet magnam molestias sint voluptatem. Error veritatis quia, quod atque perspiciatis doloribus dolorem numquam culpa dolores voluptatem laborum tenetur hic maxime.
+                    </p>
+                    <a href="#" class="blog_btn">View more</a>
+                </div>
+
+                <div class="blog_card">
+                    <img src="{{ url_for('static', filename='img/blog2.jpg') }}" alt="Blog 2">
+                    <h3>Title article 2</h3>
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga accusamus voluptates architecto consequuntur nam obcaecati debitis assumenda id blanditiis. Veniam aliquam nemo ipsam minima? Quos quibusdam similique laborum consequuntur esse.
+                    </p>
+                    <a href="#" class="blog_btn">View more</a>
+                </div>
+
+                <div class="blog_card">
+                    <img src="{{ url_for('static', filename='img/blog3.jpg') }}" alt="Blog 3">
+                    <h3>Title article 3</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus, minima voluptas vitae laudantium recusandae sed facilis optio cum veniam quam beatae dicta quisquam placeat nostrum corrupti. Consectetur, numquam quia.
+                    </p>
+                    <a href="#" class="blog_btn">View more</a>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
 
 {% endblock %}
     
