@@ -7,14 +7,45 @@
 {% endblock %}
 
 
-
-
-
-
-
 {% block content %}
 
-<p>ici les pages</p>
+    <section class="hero_pages">
+        <img src="{{ url_for('static', filename='img/photo_computer.jpg') }}" alt="contact image">
+        <div class="container">
+            <h1>About</h1>
+        </div>
+    </section>
+
+    <section id="cards_pages_txt">
+        <div class="container">
+
+            <div class="card_pages_txt">
+                <h3>Educational Platform</h3>
+                <h4>Branding/ Developement/ Marketing</h4>
+            </div>
+
+            <div class="card_pages_txt">
+                <h3>Educational Platform</h3>
+                <h4>Branding/ Developement/ Marketing</h4>
+            </div>
+
+            <div class="card_pages_txt">
+                <h3>Educational Platform</h3>
+                <h4>Branding/ Developement/ Marketing</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="pages_green_img">
+        <div class="container">
+            <img src="{{ url_for('static', filename='img/devs_hablando.jpeg') }}" alt="services">
+            <div class="container_pages_txt">
+                <h2>Passionate About Creating Quality Desing</h2>
+                <p>We are a creative agency working with brands building insighful strategy, creating unique desings and crafting value</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum officia minus aliquid enim dolores in rerum, nihil nemo, quibusdam error perspiciatis autem nulla aliquam alias adipisci aut quos harum sed.</p>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}
 

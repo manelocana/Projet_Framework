@@ -1,0 +1,59 @@
+
+
+@media(min-width: 768px) {
+    .hero_pages {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 60vh;
+        background-image: linear-gradient(
+            rgb(0,0,0,0.1),
+            rgb(0,0,0,1)
+            ) ,url("../img/photo_computer.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+
+    .hero_pages .container {
+        background-color: transparent;
+        margin: 0 auto;
+        font-size: 2rem;
+        color: aliceblue;
+    }
+
+    .hero_pages img {
+        display: none;
+    }
+
+    #cards_pages_txt .container {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        margin-bottom: 100px;
+        padding: 40px;
+        margin-top: 100px;
+    }
+
+    #pages_green_img .container {
+    text-align: right;
+    margin-top: 20px;
+    margin-bottom: 100px;
+    background-color: rgb(232, 255, 127);
+    padding: 100px;
+    }
+
+    #pages_green_img img {
+        display: block;
+        max-width: 40%;
+        height: auto;
+        border-radius: 5px;
+    }
+    
+    #pages_green_img .container_pages_txt {
+        margin-left: 500px;
+    }
+
+    #pages_green_img p {
+        margin-top: 60px;
+        margin-bottom: 70px;
+    }
+}

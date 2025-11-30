@@ -1,6 +1,6 @@
 
 
-.hero-portfolio {
+.hero_portfolio {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,14 +8,14 @@
     padding: 40px 20px;
 }
 
-.hero-portfolio img {
+.hero_portfolio img {
     max-width: 100%;
     height: auto;
     display: block;
     margin: 0 auto;
 }
 
-.hero-portfolio .container {
+.hero_portfolio .container {
     text-align: center;
     background-color: transparent;
     color: black; 
@@ -34,7 +34,7 @@
 
 
 @media(min-width: 768px) {
-    .hero-portfolio {
+    .hero_portfolio {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -47,14 +47,14 @@
         background-size: cover;
     }
 
-    .hero-portfolio .container {
+    .hero_portfolio .container {
         background-color: transparent;
         margin: 0 auto;
         font-size: 2rem;
         color: aliceblue;
     }
 
-    .hero-portfolio img {
+    .hero_portfolio img {
         display: none;
     }
 
