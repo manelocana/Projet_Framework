@@ -24,7 +24,8 @@ li {font-size: 1.2em;}
 button, 
 .hero a,
 #map_container a,
-#cards a {
+#cards a, 
+#lets_create a {
     font-size: 1.2em;
     font-weight: bold;
     padding: 10px 10px;
@@ -39,7 +40,8 @@ button,
 button:hover, 
 .hero a:hover,
 #map_container a:hover,
-#cards a:hover {
+#cards a:hover,
+#lets_create a:hover {
     background-color: rgb(175, 0, 67);
 }
 

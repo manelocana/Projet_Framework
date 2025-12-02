@@ -75,9 +75,15 @@
             <h2>DISCOVER OUR SELECTED PROJECTS</h2>
         </div>
         <div class="scroll_container">
-            <img src="{{ url_for('static', filename='img/photo_computer.jpg') }}" alt="photo computer">
-            <img src="{{ url_for('static', filename='img/photo_devweb.jpg') }}" alt="dev web">
-            <img src="{{ url_for('static', filename='img/photo_ordi.jpg') }}" alt="pc computer">
+            <a href="{{ url_for('portfolio.projet_1') }}">
+                <img src="{{ url_for('static', filename='img/photo_ordi.jpg') }}" alt="photo computer">
+            </a>
+            <a href="{{ url_for('portfolio.projet_1') }}">
+                <img src="{{ url_for('static', filename='img/photo_devweb.jpg') }}" alt="dev web">
+            </a>
+            <a href="{{ url_for('portfolio.projet_1') }}">
+                <img src="{{ url_for('static', filename='img/photo_computer.jpg') }}" alt="pc computer">
+            </a>
         </div>
     </section>
 
@@ -164,7 +170,7 @@
                 We shift your from today's reality to tomorrow's
                 potential, ensuring.
             </p>
-            <button type="button" href="#">LET'S TALK WITH US</button>
+            <a href="mailto:987frisk.agency@mail.com">LET'S TALK WITH US</a>
         </div>
     </section>
 
