@@ -8,14 +8,13 @@ from app.routes.contact import contact_bp
 
 from app.extensions import db
 
+from app.models.post import Post
 
 
 def create_app():
     app = Flask(__name__)
-    
 
     app.config.from_object("config.Config")
-
 
     db.init_app(app)
 
