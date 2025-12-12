@@ -24,7 +24,8 @@ li {font-size: 1.2em;}
 button, 
 .hero a,
 #map_container a,
-#cards a, 
+#cards a,
+#cards_articles a, 
 #lets_create a {
     font-size: 1.2em;
     font-weight: bold;
@@ -41,6 +42,7 @@ button:hover,
 .hero a:hover,
 #map_container a:hover,
 #cards a:hover,
+#cards_articles a:hover,
 #lets_create a:hover {
     background-color: rgb(175, 0, 67);
 }
@@ -166,6 +168,7 @@ header button {
 #cards h3, #cards p,
 #cards button,
 #cards a,
+#cards_articles a,
 #cards_articles h2, 
 #cards_articles h3,
 #cards_articles h4,
@@ -188,7 +191,8 @@ header button {
     display: none;
 }
 
-#cards a {
+#cards a,
+#cards_articles a {
     text-decoration: none;
 }
 
