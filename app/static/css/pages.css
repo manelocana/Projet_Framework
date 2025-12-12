@@ -12,16 +12,6 @@
     padding: 20px;
 }
 
-#pages_green_img .container{
-    text-align: center;
-}
-
-#pages_green_img img {
-    width: 100%;
-    max-width: 500px;
-    padding: 20px;
-}
-
 
 @media(min-width: 768px) {
     .hero_pages {
@@ -56,27 +46,4 @@
         margin-top: 100px;
     }
 
-    #pages_green_img .container {
-    text-align: right;
-    margin-top: 20px;
-    margin-bottom: 100px;
-    background-color: rgb(232, 255, 127);
-    padding: 100px;
-    }
-
-    #pages_green_img img {
-        display: block;
-        max-width: 40%;
-        height: auto;
-        border-radius: 5px;
-    }
-    
-    #pages_green_img .container_pages_txt {
-        margin-left: 500px;
-    }
-
-    #pages_green_img p {
-        margin-top: 60px;
-        margin-bottom: 70px;
-    }
 }

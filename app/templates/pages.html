@@ -16,36 +16,51 @@
         </div>
     </section>
 
-    <section id="cards_pages_txt">
+    <section id="cards">
+        <h2>WHAT WE CAN DO FOR OUR CLIENTS</h2>
         <div class="container">
+            <div class="card_desing">
+                <h3>Branding Desing</h3>
+                <p>branding desing</p>
+                <a href="{{ url_for('pages.branding') }}">VIEW DETAILS</a>
 
-            <div class="card_pages_txt">
-                <h3>Educational Platform</h3>
-                <h4>Branding/ Developement/ Marketing</h4>
             </div>
-
-            <div class="card_pages_txt">
-                <h3>Educational Platform</h3>
-                <h4>Branding/ Developement/ Marketing</h4>
+            <div class="card_develope">
+                <h3>Website Developement</h3>
+                <p>Websitedevelopee</p>
+                <a href="{{ url_for('pages.branding') }}">VIEW DETAILS</a>
             </div>
-
-            <div class="card_pages_txt">
-                <h3>Educational Platform</h3>
-                <h4>Branding/ Developement/ Marketing</h4>
+            <div class="card_modelling">
+                <h3>Illustration Modelling</h3>
+                <p>modelo de ilustracion</p>
+                <a href="{{ url_for('pages.branding') }}">VIEW DETAILS</a>
+            </div>
+            <div class="card_marketing">
+                <h3>Sigital Marketing</h3>
+                <p>digital marketing</p>
+                <a href="{{ url_for('pages.branding') }}">VIEW DETAILS</a>
             </div>
         </div>
     </section>
 
-    <section id="pages_green_img">
+    <section class="services">
         <div class="container">
             <img src="{{ url_for('static', filename='img/devs_hablando.jpeg') }}" alt="services">
-            <div class="container_pages_txt">
-                <h2>Passionate About Creating Quality Desing</h2>
+            <div class="container_del_container">
+                <h2>WE OFFER A WIDE RANGE OF BRAND SERVICES</h2>
+                <h3>Passionate About Creating Quality Desing</h3>
                 <p>We are a creative agency working with brands building insighful strategy, creating unique desings and crafting value</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum officia minus aliquid enim dolores in rerum, nihil nemo, quibusdam error perspiciatis autem nulla aliquam alias adipisci aut quos harum sed.</p>
+                <p class="services_list">
+                    branding<br>
+                    developpement<br>
+                    advertising<br>
+                    marketing
+                </p>
             </div>
         </div>
     </section>
+
+    
 
 {% endblock %}
 

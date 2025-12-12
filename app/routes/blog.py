@@ -1,4 +1,9 @@
+
+
 from flask import Blueprint, render_template
+from app.models.post import Post
+
+
 
 blog_bp = Blueprint('blog', __name__)
 
@@ -10,4 +15,10 @@ def blog():
 
 @blog_bp.route('/blog/article')
 def blog_article():
-    return render_template('landing_blog.html', search_button=True)
+    return render_template('blog/article.html', search_button=True)
+
+
+@blog_bp.route('/blog/list')
+def list_posts():
+    posts = Post.query.all()
+    return render_template('blog/list.html', posts=posts)

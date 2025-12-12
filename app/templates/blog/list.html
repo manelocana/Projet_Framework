@@ -1,0 +1,41 @@
+
+
+{% extends 'index.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
+{% endblock %}
+
+
+{% block content %}
+
+<section id="blog" class="blog_section">
+
+    <div class="container">
+        <h2>BLOG</h2>
+
+        <div class="blog_container">
+
+            {% for post in posts %}
+
+                <div class="blog_card">
+                    <img src="{{ url_for('static', filename='img/blog1.jpeg') }}" alt="Blog Image">
+                    <h3>{{ post.title }}</h3>
+
+                    <p>{{ post.content[:120] }}...</p>
+
+                    <a href="{{ url_for('blog.blog_article', post_id=post.id) }}" class="blog_btn">
+                        View more
+                    </a>
+                </div>
+
+            {% else %}
+                <p>No hay posts aún.</p>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

@@ -10,5 +10,5 @@ def pages():
 
 @pages_bp.route('/pages/branding')
 def branding():
-    return render_template('projet_branding.html', search_button=True)
+    return render_template('services/projet_branding.html', search_button=True)
 
