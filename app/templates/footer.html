@@ -29,11 +29,11 @@
         <div class="container_right">
             <h4 class="h4_links">Links</h4>
             <nav>
-                <a href="#">About</a>
-                <a href="#">Portfolio</a>
-                <a href="#">Services</a>
-                <a href="#">Testimonials</a>
-                <a href="#">Careers</a>
+                <a href="{{ url_for('pages.pages') }}">About</a>
+                <a href="{{ url_for('portfolio.portfolio') }}">Portfolio</a>
+                <a href="{{ url_for('pages.branding') }}">Services</a>
+                <a href="{{ url_for('blog.blog') }}">Testimonials</a>
+                <a href="{{ url_for('contact.contact') }}">Careers</a>
             </nav>
         </div>
 
