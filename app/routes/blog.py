@@ -1,6 +1,6 @@
 
 
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, redirect, url_for
 from app.models.post import Post
 from app.extensions import db
 
@@ -29,3 +29,18 @@ def blog():
 def blog_article(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template('blog/blog_article.html', post=post)
+
+
+@blog_bp.route('/blog/new', methods=['GET', 'POST'])
+def blog_new():
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+
+        new_post = Post(title=title, content=content)
+        db.session.add(new_post)
+        db.session.commit()
+
+        return redirect(url_for('blog.blog'))
+
+    return render_template('blog/blog_new.html')

@@ -16,6 +16,9 @@
 
         <div class="blog_container">
 
+            <a href="{{ url_for('blog.blog_new') }}">+ New post</a>
+
+
             {% for post in posts %}
 
                 <div class="blog_card">
