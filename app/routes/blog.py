@@ -40,7 +40,17 @@ def blog_new():
         new_post = Post(title=title, content=content)
         db.session.add(new_post)
         db.session.commit()
-
         return redirect(url_for('blog.blog'))
-
     return render_template('blog/blog_new.html')
+
+
+@blog_bp.route('/blog/<int:post_id>/edit', methods=['GET', 'POST'])
+def blog_edit(post_id):
+    post = Post.query.get_or_404(post_id)
+    if request.method == 'POST':
+        post.title = request.form['title']
+        post.content = request.form['content']
+
+        db.session.commit()
+        return redirect(url_for('blog.blog_article', post_id=post.id))
+    return render_template('blog/blog_edit.html', post=post)

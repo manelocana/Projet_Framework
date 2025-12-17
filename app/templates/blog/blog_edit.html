@@ -1,0 +1,37 @@
+
+
+
+{% extends 'index.html' %}
+
+{% block content %}
+
+    <section class="container py-5">
+        <h2>Edit article</h2>
+
+        <form method="POST">
+            <div class="mb-3">
+                <label>Title</label>
+                <input
+                    type="text"
+                    name="title"
+                    class="form-control"
+                    value="{{ post.title }}"
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label>Content</label>
+                <textarea
+                    name="content"
+                    class="form-control"
+                    rows="6"
+                    required
+                >{{ post.content }}</textarea>
+            </div>
+
+            <button class="btn btn-dark">Save changes</button>
+        </form>
+    </section>
+
+{% endblock %}
