@@ -21,7 +21,7 @@ def blog_article():
 
 @blog_bp.route('/blog')
 def blog():
-    posts = Post.query.all()
+    posts = Post.query.order_by(Post.id.desc()).all()
     return render_template('blog/blog.html', posts=posts)
 
 
@@ -36,8 +36,8 @@ def blog_new():
     if request.method == 'POST':
         title = request.form['title']
         content = request.form['content']
-
         new_post = Post(title=title, content=content)
+
         db.session.add(new_post)
         db.session.commit()
         return redirect(url_for('blog.blog'))

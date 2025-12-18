@@ -75,15 +75,12 @@
             <h2>DISCOVER OUR SELECTED PROJECTS</h2>
         </div>
         <div class="scroll_container">
-            <a href="{{ url_for('portfolio.projet_1') }}">
+            {% for project in projects %}
+            <a href="{{ url_for('portfolio.portfolio_project', project_id=project.id) }}">
                 <img src="{{ url_for('static', filename='img/photo_ordi.jpg') }}" alt="photo computer">
             </a>
-            <a href="{{ url_for('portfolio.projet_1') }}">
-                <img src="{{ url_for('static', filename='img/photo_devweb.jpg') }}" alt="dev web">
-            </a>
-            <a href="{{ url_for('portfolio.projet_1') }}">
-                <img src="{{ url_for('static', filename='img/photo_computer.jpg') }}" alt="pc computer">
-            </a>
+            {% endfor %}
+            
         </div>
     </section>
 

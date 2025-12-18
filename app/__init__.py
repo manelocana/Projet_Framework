@@ -9,6 +9,7 @@ from app.routes.contact import contact_bp
 from app.extensions import db
 
 from app.models.post import Post
+from app.models.portfolio import Project
 
 
 def create_app():
