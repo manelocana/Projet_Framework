@@ -27,10 +27,15 @@
             {% for project in projects %}
 
                 <div class="card_decentralized">
-                    <a href="{{ url_for('portfolio.portfolio_project') }}">
-                        <img src="{{ url_for('static', filename='img/photo_ordi.jpg') }}" alt="Branding-design">
-                        <h3>Educational Platform</h3>
-                        <h4>Branding/ Developement/ Marketing</h4>
+                    <a href="{{ url_for('portfolio.portfolio_project', project_id=project.id) }}">
+
+                        {% if project.image %}
+                            <img src="{{ url_for('static', filename='uploads/portfolio/' ~ project.image) }}" class="img-fluid">
+                        {% endif %}
+                        
+                        <h3>{{ project.title }}</h3>
+                        <h4>{{ project.description }}</h4>
+                        View project
                     </a>
                 </div>
 

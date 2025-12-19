@@ -1,6 +1,8 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, current_app
 from app.models.portfolio import Project
 from app.extensions import db
+import os
+from werkzeug.utils import secure_filename
 
 
 portfolio_bp = Blueprint('portfolio', __name__)
@@ -34,11 +36,20 @@ def portfolio_project(project_id):
 @portfolio_bp.route('/portfolio/new', methods=['GET', 'POST'])
 def portfolio_new():
     if request.method == 'POST':
-        title = request.form['title']
-        description = request.form['description']
-        image = request.form['image']
-        new_project = Project(title=title, description=description, image=image)
+        title = request.form.get('title')
+        description = request.form.get('description')
+        image_file = request.files.get('image')
 
+        image_filename = None
+
+        if image_file and image_file.filename:
+            image_filename = secure_filename(image_file.filename)
+            
+            upload_path = os.path.join(current_app.config['UPLOAD_FOLDER'], 'portfolio')
+
+            image_file.save(os.path.join(upload_path, image_filename))
+
+        new_project = Project(title=title, description=description, image=image_filename)
         db.session.add(new_project)
         db.session.commit()
         return redirect(url_for('portfolio.portfolio'))
@@ -48,21 +59,34 @@ def portfolio_new():
 @portfolio_bp.route('/portfolio/<int:project_id>/edit', methods=['GET', 'POST'])
 def portfolio_edit(project_id):
     project = Project.query.get_or_404(project_id)
+
     if request.method == 'POST':
-        project.title = request.form['title']
-        project.description = request.form['description']
-        project.image = request.form['image']
+        project.title = request.form.get('title')
+        project.description = request.form.get('description')
+        image_file = request.files.get('image')
+
+        if image_file and image_file.filename:
+            image_filename = secure_filename(image_file.filename)
+
+            upload_path = os.path.join(current_app.config['UPLOAD_FOLDER'], 'portfolio')
+
+            image_file.save(os.path.join(upload_path, image_filename))
+            project.image = image_filename
 
         db.session.commit()
         return redirect(url_for('portfolio.portfolio_project', project_id=project.id))
-    return render_template('portfolio/portfolio_edit.html', project=project)
+    return render_template('portfolio/portfolio_edit.html', project=project) 
 
 
 @portfolio_bp.route('/portfolio/<int:project_id>/delete', methods=['POST'])
 def portfolio_delete(project_id):
     project = Project.query.get_or_404(project_id)
 
+    if project.image:
+        image_path = os.path.join(current_app.config['UPLOAD_FOLDER'], 'portfolio', project.image)
+        if os.path.exists(image_path):
+            os.remove(image_path)
+
     db.session.delete(project)
     db.session.commit()
-
     return redirect(url_for('portfolio.portfolio'))

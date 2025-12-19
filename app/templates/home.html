@@ -74,14 +74,15 @@
         <div class="container">
             <h2>DISCOVER OUR SELECTED PROJECTS</h2>
         </div>
+
         <div class="scroll_container">
             {% for project in projects %}
             <a href="{{ url_for('portfolio.portfolio_project', project_id=project.id) }}">
-                <img src="{{ url_for('static', filename='img/photo_ordi.jpg') }}" alt="photo computer">
+                <img src="{{ url_for('static', filename='/portfolio' ~ project.image) }}" alt="photo project">
             </a>
             {% endfor %}
-            
         </div>
+        
     </section>
 
     <section class="events">

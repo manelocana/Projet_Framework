@@ -9,4 +9,4 @@ class Config:
     SQLALCHEMY_DATABASE_URI = f"sqlite:///{os.path.join(BASE_DIR, 'instance', 'portfolio.db')}"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    UPLOAD_FOLDER = os.path.join(BASE_DIR, 'app', 'static', 'img')
+    UPLOAD_FOLDER = os.path.join(BASE_DIR, 'app/static/uploads')
