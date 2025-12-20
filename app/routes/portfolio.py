@@ -30,7 +30,7 @@ def portfolio():
 @portfolio_bp.route('/portfolio/<int:project_id>')
 def portfolio_project(project_id):
     project = Project.query.get_or_404(project_id)
-    return render_template('portfolio/portfolio_project.html', project=project)
+    return render_template(f'portfolio/projects/project_{project.id}', project=project)
 
 
 @portfolio_bp.route('/portfolio/new', methods=['GET', 'POST'])
@@ -47,6 +47,7 @@ def portfolio_new():
             
             upload_path = os.path.join(current_app.config['UPLOAD_FOLDER'], 'portfolio')
 
+            os.makedirs(upload_path, exist_ok=True)
             image_file.save(os.path.join(upload_path, image_filename))
 
         new_project = Project(title=title, description=description, image=image_filename)
@@ -70,6 +71,7 @@ def portfolio_edit(project_id):
 
             upload_path = os.path.join(current_app.config['UPLOAD_FOLDER'], 'portfolio')
 
+            os.makedirs(upload_path, exist_ok=True)
             image_file.save(os.path.join(upload_path, image_filename))
             project.image = image_filename
 
