@@ -25,7 +25,7 @@ def login():
 
         if user and check_password_hash(user.password, password):
             login_user(user)
-            return redirect(url_for('portfolio.portfolio'))
+            return redirect(url_for('home.home'))
         
         flash('Pass or name not correct', 'error')
     return render_template('auth/login.html')
@@ -35,4 +35,4 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('blog.blog'))
+    return redirect(url_for('home.home'))

@@ -1,0 +1,24 @@
+
+
+{% extends "index.html" %}
+
+
+{% block content %}
+
+    <section class="container py-5" style="max-width: 400px;">
+        <h2 class="mb-4">Admin Login</h2>
+
+        <form method="POST">
+            <div class="mb-3">
+                <input type="text" name="username" class="form-control" placeholder="Username" required>
+            </div>
+
+            <div class="mb-3">
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
+            </div>
+
+            <button class="btn btn-dark w-100">Login</button>
+        </form>
+    </section>
+    
+{% endblock %}
