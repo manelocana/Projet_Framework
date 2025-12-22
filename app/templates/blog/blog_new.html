@@ -8,22 +8,15 @@
     <section class="container" style="max-width:600px; margin: 80px auto;">
         <h2>Create new post</h2>
 
-        <form method="POST">
-            <div>
-                <label>Title</label><br>
-                <input type="text" name="title" required style="width:100%">
-            </div>
+        <form method="POST" action="{{ url_for('blog.blog_new') }}" enctype="multipart/form-data">
 
+            <input type="text" name="title" placeholder="Title">
             <br>
-
-            <div>
-                <label>Content</label><br>
-                <textarea name="content" rows="6" required style="width:100%"></textarea>
-            </div>
-
+            <textarea name="content" placeholder="Content"></textarea>
             <br>
-
-            <button type="submit">Save post</button>
+            <input type="file" name="image">
+            <br>
+            <button type="submit">Create Post</button>
         </form>
     </section>
     

@@ -1,8 +1,11 @@
 
 
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, current_app
 from app.models.post import Post
 from app.extensions import db
+import os
+from werkzeug.utils import secure_filename
+
 
 
 
@@ -13,10 +16,10 @@ blog_bp = Blueprint('blog', __name__)
 def blog():
     return render_template('blog/blog.html', search_button=True) """
 
-
 """ @blog_bp.route('/blog/article')
 def blog_article():
     return render_template('blog/blog_article.html', search_button=True) """
+
 
 
 @blog_bp.route('/blog')
@@ -35,9 +38,17 @@ def blog_article(post_id):
 def blog_new():
     if request.method == 'POST':
         title = request.form['title']
-        content = request.form['content']
-        new_post = Post(title=title, content=content)
+        content = request.form.get('content')
+        image_file = request.files.get('image')
 
+        image_filename=None
+        if image_file and image_file.filename:
+            image_filename = secure_filename(image_file.filename)
+            upload_path = os.path.join(current_app.config['UPLOAD_FOLDER'], 'blog')
+            os.makedirs(upload_path, exist_ok=True)
+            image_file.save(os.path.join(upload_path, image_filename))
+        
+        new_post = Post(title=title, content=content, image=image_filename)
         db.session.add(new_post)
         db.session.commit()
         return redirect(url_for('blog.blog'))
@@ -49,7 +60,22 @@ def blog_edit(post_id):
     post = Post.query.get_or_404(post_id)
     if request.method == 'POST':
         post.title = request.form['title']
-        post.content = request.form['content']
+        post.content = request.form.get('content')
+        image_file = request.files.get('image')
+
+        image_filename=None
+        if image_file and image_file.filename:
+            image_filename = secure_filename(image_file.filename)
+            upload_path = os.path.join(current_app.config['UPLOAD_FOLDER'], 'blog')
+            os.makedirs(upload_path, exist_ok=True)
+
+            if post.image:
+                old_path = os.path.join(upload_path, post.image)
+                if os.path.exists(old_path):
+                    os.remove(old_path)
+
+            image_file.save(os.path.join(upload_path, image_filename))
+            post.image = image_filename
 
         db.session.commit()
         return redirect(url_for('blog.blog_article', post_id=post.id))
@@ -59,6 +85,12 @@ def blog_edit(post_id):
 @blog_bp.route('/blog/<int:post_id>/delete', methods=['POST'])
 def blog_delete(post_id):
     post = Post.query.get_or_404(post_id)
+
+    if post.image:
+        image_path = os.path.join(current_app.config['UPLOAD_FOLDER'], 'blog', post.image)
+        
+        if os.path.exists(image_path):
+            os.remove(image_path)
 
     db.session.delete(post)
     db.session.commit()

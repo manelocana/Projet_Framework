@@ -47,7 +47,6 @@ def portfolio_new():
         title = request.form.get('title')
         description = request.form.get('description')
         image_file = request.files.get('image')
-
         image_filename = None
 
         if image_file and image_file.filename:

@@ -9,7 +9,9 @@
         <div class="container">
             <h1>{{ post.title }}</h1>
 
-            <img src="{{ url_for('static', filename='img/blog1.jpeg') }}" alt="">
+            {% if post.image %}
+                <img src="{{ url_for('static', filename='uploads/blog/' ~ post.image) }}" class="img-fluid mb-3">
+            {% endif %}
 
             <p>{{ post.content }}</p>
 
@@ -20,9 +22,7 @@
                 <button>Delete article</button>
             </form>
 
-
             <a href="{{ url_for('blog.blog') }}">Back</a>
-
 
         </div>
     </section>
