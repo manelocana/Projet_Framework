@@ -5,11 +5,10 @@ from app.routes.pages import pages_bp
 from app.routes.portfolio import portfolio_bp
 from app.routes.blog import blog_bp
 from app.routes.contact import contact_bp
+from app.routes.auth import auth_bp
 
-from app.extensions import db
+from app.extensions import db, login_manager
 
-from app.models.post import Post
-from app.models.portfolio import Project
 
 
 def create_app():
@@ -18,12 +17,15 @@ def create_app():
     app.config.from_object("config.Config")
 
     db.init_app(app)
-
+    
+    login_manager.init_app(app)
+    login_manager.login_view = 'auth.login'
 
     app.register_blueprint(home_bp)
     app.register_blueprint(pages_bp)
     app.register_blueprint(portfolio_bp)
     app.register_blueprint(blog_bp)
     app.register_blueprint(contact_bp)
+    app.register_blueprint(auth_bp)
 
     return app
