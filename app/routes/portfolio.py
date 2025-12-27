@@ -3,7 +3,7 @@ from app.models.portfolio import Project
 from app.extensions import db
 import os
 from werkzeug.utils import secure_filename
-from flask import login_required
+from flask_login import login_required
 
 
 
