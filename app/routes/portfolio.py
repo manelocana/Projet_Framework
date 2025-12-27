@@ -3,6 +3,8 @@ from app.models.portfolio import Project
 from app.extensions import db
 import os
 from werkzeug.utils import secure_filename
+from flask import login_required
+
 
 
 portfolio_bp = Blueprint('portfolio', __name__)
@@ -42,6 +44,7 @@ def portfolio_project(project_id):
 
 
 @portfolio_bp.route('/portfolio/new', methods=['GET', 'POST'])
+@login_required
 def portfolio_new():
     if request.method == 'POST':
         title = request.form.get('title')
@@ -63,6 +66,7 @@ def portfolio_new():
 
 
 @portfolio_bp.route('/portfolio/<int:project_id>/edit', methods=['GET', 'POST'])
+@login_required
 def portfolio_edit(project_id):
     project = Project.query.get_or_404(project_id)
 
@@ -84,6 +88,7 @@ def portfolio_edit(project_id):
 
 
 @portfolio_bp.route('/portfolio/<int:project_id>/delete', methods=['POST'])
+@login_required
 def portfolio_delete(project_id):
     project = Project.query.get_or_404(project_id)
 

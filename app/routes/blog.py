@@ -5,6 +5,7 @@ from app.models.post import Post
 from app.extensions import db
 import os
 from werkzeug.utils import secure_filename
+from flask import login_required
 
 
 
@@ -35,6 +36,7 @@ def blog_article(post_id):
 
 
 @blog_bp.route('/blog/new', methods=['GET', 'POST'])
+@login_required
 def blog_new():
     if request.method == 'POST':
         title = request.form['title']
@@ -56,6 +58,7 @@ def blog_new():
 
 
 @blog_bp.route('/blog/<int:post_id>/edit', methods=['GET', 'POST'])
+@login_required
 def blog_edit(post_id):
     post = Post.query.get_or_404(post_id)
     if request.method == 'POST':
@@ -83,6 +86,7 @@ def blog_edit(post_id):
 
 
 @blog_bp.route('/blog/<int:post_id>/delete', methods=['POST'])
+@login_required
 def blog_delete(post_id):
     post = Post.query.get_or_404(post_id)
 
