@@ -77,8 +77,9 @@
 
         <div class="scroll_container">
             {% for project in projects %}
+                <p style="color:red">HOLA {{ project.title }}</p>
             <a href="{{ url_for('portfolio.portfolio_project', project_id=project.id) }}">
-                <img src="{{ url_for('static', filename='/portfolio' ~ project.image) }}" alt="photo project">
+                <img src="{{ url_for('static', filename='uploads/portfolio/' ~ project.image) }}" alt="photo project">
             </a>
             {% endfor %}
         </div>
