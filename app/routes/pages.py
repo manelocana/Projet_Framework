@@ -8,7 +8,7 @@ def pages():
     return render_template('pages.html', search_button=True)
 
 
-@pages_bp.route('/pages/branding')
+@pages_bp.route('/pages/projet_branding')
 def branding():
-    return render_template('services/projet_branding.html', search_button=True)
+    return render_template('pages/projet_branding.html', search_button=True)
 
