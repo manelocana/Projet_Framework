@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from app.models.portfolio import Project
 
 
 home_bp = Blueprint('home', __name__)
@@ -6,4 +7,5 @@ home_bp = Blueprint('home', __name__)
 
 @home_bp.route('/')
 def home():
-    return render_template('home.html', title='Home', search_button=True)
+    projects = Project.query.order_by(Project.id.desc()).all()
+    return render_template('home.html', projects=projects, title='Home', search_button=True)
