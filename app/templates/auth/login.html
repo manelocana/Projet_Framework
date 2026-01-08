@@ -1,51 +1,26 @@
+
+
+
+
 {% extends "index.html" %}
-
-{% block extra_css %}
-    <style>
-        .login-section {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #f4f6f8;
-        }
-
-        .login-card {
-            width: 100%;
-            max-width: 380px;
-            padding: 2rem;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        }
-
-        .login-card h2 {
-            font-weight: 600;
-        }
-
-    </style>
-{% endblock %}
-
 
 
 {% block content %}
 
-<section class="login-section">
-    <div class="login-card">
-        <h2 class="text-center mb-4">Admin Login</h2>
+<section class="login-section flex-center">
+    <div class="login-card"> 
 
-        <form method="POST">
-            <div class="mb-3">
-                <input type="text" name="username" class="form-control" placeholder="Username" required>
-            </div>
+        <h2 class="text-center">Admin Login</h2>
 
-            <div class="mb-3">
-                <input type="password" name="password" class="form-control" placeholder="Password" required>
-            </div>
+        <form class="flex-column">
+            <input class="input" placeholder="Username">
+            <input class="input" placeholder="Password">
 
-            <button class="btn btn-dark w-100">Login</button>
+            <button class="btn w-100">Login</button>
         </form>
+        
     </div>
 </section>
+
 
 {% endblock %}
