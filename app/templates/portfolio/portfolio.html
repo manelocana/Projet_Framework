@@ -21,18 +21,20 @@
     <section id="cards_portfolio">
 
         {% if current_user.is_authenticated %}
-        <a href="{{ url_for('portfolio.portfolio_new') }}">Add new project</a>
+            <div class="add_new_project">
+                <a href="{{ url_for('portfolio.portfolio_new') }}" class="btn">Add new project</a>
+            </div>
         {% endif %}
 
         <div class="container">
-
+            
             {% for project in projects %}
 
                 <div class="card_decentralized">
                     <a href="{{ url_for('portfolio.portfolio_project', project_id=project.id) }}">
 
                         {% if project.image %}
-                            <img src="{{ url_for('static', filename='uploads/portfolio/' ~ project.image) }}" class="img-fluid">
+                            <img src="{{ url_for('static', filename='uploads/portfolio/' ~ project.image) }}" alt="project_image">
                         {% endif %}
                         
                         <h3>{{ project.title }}</h3>
@@ -41,11 +43,11 @@
                     <br>
                     
                     {% if current_user.is_authenticated %}
-                        <div>
-                            <a href="{{ url_for('portfolio.portfolio_edit', project_id=project.id) }}" class="btn btn-warning me-2">
+                        <div class="buttons_portfolio">
+                            <a href="{{ url_for('portfolio.portfolio_edit', project_id=project.id) }}" class="btn">
                                 Edit project
                             </a>
-                            <br>
+                            
                             <form action="{{ url_for('portfolio.portfolio_delete', project_id=project.id) }}"
                                 method="POST"
                                 style="display:inline;"

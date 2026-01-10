@@ -12,11 +12,12 @@
 
         <h2 class="text-center">Admin Login</h2>
 
-        <form class="flex-column">
-            <input class="input" placeholder="Username">
-            <input class="input" placeholder="Password">
+        <form method="POST" class="login-form">
+            <input type="text" name="username" class="input" placeholder="Username" required>
 
-            <button class="btn w-100">Login</button>
+            <input type="password" name="password" class="input" placeholder="Password" required>
+
+            <button type="submit" class="btn w-100">Login</button>
         </form>
         
     </div>

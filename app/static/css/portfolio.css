@@ -23,6 +23,13 @@
 }
 
 
+.add_new_project {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+
 #cards_portfolio .container img {
     max-width: 100%; 
     border-radius: 8px;
@@ -31,6 +38,7 @@
 #cards_portfolio .container > div {
     margin-bottom: 150px;
 }
+
 
 
 @media(min-width: 768px) {

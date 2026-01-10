@@ -88,6 +88,10 @@ button:hover,
     background-color: rgb(175, 0, 67);
 }
 
+.btn-danger {
+    background-color: rgba(255, 0, 0, 0.692);
+}
+
 .input {
     margin-bottom: 20px;
     width: 100%;
