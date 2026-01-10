@@ -25,7 +25,6 @@
     border-radius: 8px;
 }
 
-/* Contenedor centrado */
 .blog-form-page {
     display: flex;
     justify-content: center;
@@ -34,7 +33,6 @@
     padding: 40px;
 }
 
-/* Card del formulario */
 .blog-form-card {
     width: 100%;
     max-width: 600px;
@@ -44,13 +42,11 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* Título centrado */
 .blog-form-card h2 {
     text-align: center;
     margin-bottom: 20px;
 }
 
-/* Inputs y textarea */
 .blog-form-card input[type="text"],
 .blog-form-card textarea,
 .blog-form-card input[type="file"] {
@@ -60,37 +56,6 @@
     border-radius: 6px;
     border: 1px solid #ccc;
 }
-
-/* Botón Crear Post */
-.btn-create {
-    width: 100%;
-    padding: 10px;
-    margin-top: 12px;
-    background-color: #7401b2;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-/* Hover botón */
-.btn-create:hover {
-    background-color: #a500c3;
-}
-
-/* Botón Back */
-.btn-back {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-    color: #7401b2;
-    text-decoration: none;
-}
-
-.btn-back:hover {
-    color: #a500c3;
-}
-
 
 
 

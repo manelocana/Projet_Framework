@@ -82,6 +82,7 @@ button:hover,
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
+    margin-bottom: 20px;
 }
 
 .btn:hover {

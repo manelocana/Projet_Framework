@@ -3,34 +3,41 @@
 
 {% extends 'index.html' %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
+{% endblock %}
+
 {% block content %}
 
-    <section class="container py-5">
-        <h2>Edit article</h2>
+    <section class="blog-form-page">
 
-        <form method="POST" action="{{ url_for('blog.blog_edit', post_id=post.id) }}" enctype="multipart/form-data">
-            
-            <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{ post.title }}">
-            </div>
+        <div class="blog-form-card">
+            <h2>Edit article</h2>
 
-            <div class="mb-3">
-                <label for="content" class="form-label">Content</label>
-                <textarea class="form-control" id="content" name="content">{{ post.content }}</textarea>
-            </div>
+            <form method="POST" action="{{ url_for('blog.blog_edit', post_id=post.id) }}" enctype="multipart/form-data">
+                
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" value="{{ post.title }}">
 
-            <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
-                <input type="file" class="form-control" id="image" name="image">
-                {% if post.image %}
-                    <p>Current image: <img src="{{ url_for('static', filename='uploads/portfolio/' ~ post.image) }}" height="80"></p>
-                {% endif %}
-            </div>
+                    <label for="content">Content</label>
+                    <textarea id="content" name="content">{{ post.content }}</textarea>
 
-            <button type="submit" class="btn btn-primary">Save Changes</button>
-            
-        </form>
+                    <label for="image">Image</label>
+                    <input type="file" id="image" name="image">
+
+                    {% if post.image %}
+                        <p>Current image: <img src="{{ url_for('static', filename='uploads/blog/' ~ post.image) }}" height="80"></p>
+                    {% endif %}
+
+                <div class="blog-edit-actions">
+                    <button type="submit" class="btn">Save Changes</button>
+                    <a href="{{ url_for('blog.blog') }}" class="btn btn-danger">Back</a>
+                </div>
+
+            </form>
+        </div>
     </section>
 
 {% endblock %}
