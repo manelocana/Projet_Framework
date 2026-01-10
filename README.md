@@ -44,6 +44,7 @@ Werkzeug (secure_filename)
 
 --> Structure du projet
 
+```
 Projet_Framework/
 │
 ├── app/
@@ -82,6 +83,7 @@ Projet_Framework/
 ├── main.py
 ├── requirements.txt
 └── README.md
+```
 
 
 
