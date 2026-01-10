@@ -159,4 +159,3 @@ MySQL
 AJAX / Fetch
 
 
-Projet réalisé dans le cadre d’une formation en développement web avec Flask.
