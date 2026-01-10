@@ -3,36 +3,58 @@
 
 {% extends 'index.html' %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/portfolio.css') }}">
+{% endblock %}
+
 {% block content %}
 
-    <section class="container py-5">
-        <h2>Edit Project</h2>
+<section class="form-page">
+    <div class="form-card">
+        <h2 class="text-center">Edit project</h2>
 
-        <form method="POST" action="{{ url_for('portfolio.portfolio_edit', project_id=project.id) }}" enctype="multipart/form-data">
-            
-            <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{ project.title }}">
+        <form method="POST"
+              action="{{ url_for('portfolio.portfolio_edit', project_id=project.id) }}"
+              enctype="multipart/form-data"
+              class="form">
+
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text"
+                       id="title"
+                       name="title"
+                       value="{{ project.title }}"
+                       required>
             </div>
 
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description">{{ project.description }}</textarea>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description"
+                          name="description"
+                          rows="6"
+                          required>{{ project.description }}</textarea>
             </div>
 
-            <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
-                <input type="file" class="form-control" id="image" name="image">
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="file" id="image" name="image">
+
                 {% if project.image %}
-                    <p>Current image: <img src="{{ url_for('static', filename='uploads/portfolio/' ~ project.image) }}" height="80"></p>
+                    <div class="current-image">
+                        <span>Current image</span>
+                        <img src="{{ url_for('static', filename='uploads/portfolio/' ~ project.image) }}"
+                             alt="Current image">
+                    </div>
                 {% endif %}
             </div>
 
-            <button type="submit" class="btn btn-primary">Save Changes</button>
-
-            <a href="{{ url_for('blog.blog') }}">Back</a>
+            <div class="form-actions">
+                <button type="submit" class="btn">Save changes</button>
+                <a href="{{ url_for('portfolio.portfolio') }}" class="btn btn-danger">Back</a>
+            </div>
 
         </form>
-    </section>
+    </div>
+</section>
 
 {% endblock %}

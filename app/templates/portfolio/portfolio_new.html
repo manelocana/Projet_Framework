@@ -1,38 +1,41 @@
 
 
 
-
-
 {% extends 'index.html' %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/portfolio.css') }}">
+{% endblock %}
+
 
 {% block content %}
 
-    <section class="container" style="max-width:600px; margin: 80px auto;">
+<section class="form-page">
+    <div class="form-card">
         <h2>Add new project</h2>
 
-        <form method="POST" enctype="multipart/form-data">
-            <div>
-                <label>Title</label><br>
-                <input type="text" name="title" required style="width:100%">
+        <form method="POST" enctype="multipart/form-data" class="form">
+            
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" required>
             </div>
 
-            <br>
-
-            <div>
-                <label>Content Project ==> link ?? </label><br>
-                <textarea name="description" rows="6" required style="width:100%"></textarea>
+            <div class="form-group">
+                <label for="description">Project content / link</label>
+                <textarea id="description" name="description" rows="6" required></textarea>
             </div>
 
-            <br>
-
-            <div>
-                <label>Select image</label><br>
-                <input type="file" name="image" class="form-control">
+            <div class="form-group">
+                <label for="image">Select image</label>
+                <input type="file" id="image" name="image">
             </div>
-            <br>
 
-            <button>Add project</button>
+            <button type="submit" class="btn">Add project</button>
         </form>
-    </section>
-    
+    </div>
+</section>
+
 {% endblock %}

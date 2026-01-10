@@ -43,7 +43,7 @@
                     <br>
                     
                     {% if current_user.is_authenticated %}
-                        <div class="buttons_portfolio">
+                        <div class="form-actions">
                             <a href="{{ url_for('portfolio.portfolio_edit', project_id=project.id) }}" class="btn">
                                 Edit project
                             </a>
