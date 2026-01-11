@@ -1,48 +1,222 @@
+# Portfolio Artiste - Project web Formation Ilaria Digital School
 
-Projet Portafolio
 
-BLOCK 1, FRONTEND
+## Application web développée avec Flask comprenant un portfolio de projets, un blog, ainsi qu’un espace d’administration sécurisé permettant de créer, modifier et supprimer du contenu.
 
-----------------------------------------------------------------------------------------------------------------
+### Ce projet sert de base/template pour un portfolio personnel ou pour des sites web de petits clients.
 
-Dans cette partie, je vais créer un site statique (ladingpage HTML+CSS).
+- Fonctionnalités
+- Partie publique
 
-Je vais essayer de utiliser la semantique correcte pour html, en contant avec les bonnes practiques SEO, pour google.
-Aussi je le fais en mode responsive, pour resolutions mobile et pc
 
-Premier je vais commencer faire le resolution mobile (moins 768px), adjuster tout a la petite resolution, et apres en ecran complet qui profite 
-toute l'espace del container selons la proportion de pixelles sur l'ecran, grace a les media querys @media(taille min o max) {et les atributes css que on veu parametriser}
+### --> Le site est composé de:
 
-------------------------------------------------------------------------------------------------------------------
+Page d’accueil
 
-Je vais commencer pour le page 'home', je crois cest la plus complexe, une fois finis, les autres serais plus vite (c/p).
+Portfolio avec liste de projets
 
-Je vais le faire style comme l'exemple del projet 2.
+Page détaillée pour chaque projet
 
-Le header je vais le former avec une barre de navigation (navbar) et des liens (hypertexte) pour changer d'onglet/sections.
-Je fais apres un hero, comme presentation avec une img et un lien pour regarder les ouvres du portafolio.
-Un banner, pour montrer le contacte (address ,telf...)
+Blog avec articles
 
-Une section avec des cards pour monstrer les services et apres les monstrer aussi apres une image.
-Une presentation des projets realisés, avec un scroll horizontel.
+Page individuelle pour chaque article
 
-Une section simple avec les events
-Encore une autre section avec des cards, et des liens pour de notices
 
-Et pour finir, un footer avec un label pour introduir le email, les donnes de contacte, et des liens d'interet
 
--------------------------------------------------------------------------------------------------------------------
+### --> Administration (connexion requise)
 
-Tout ça, avec son style sur css, sans framework.
+Connexion / Déconnexion administrateur
 
-Je essayé de utiliser des parametres global, pour pas repeter bcp de code.
-Comme les fonts, les buttons, le hover pour les buttons, la taille des containers...
-Aussi je vais essayer de reagrouper les classes avec les memes parametres/atributes pour repeter le minimun.
 
-Pour le hero, je vais metre une image de background, utilisant gradient, pour obscure l'image et faire le contrast.
-Pour les cards, je voulais le faire gradient aussi, parce que on peut faire une espece de degradée , mais jai eu des problemes avec, et
-finalement je utilisé un background (black avec 0.5 de opacité) et un z-index (pour positiioner le background abajo de le contenu de la card).
-Comme ça, je laisse l'estyle de la card fixé, et si je besoin changer l'image, il faut que toucher le path de la img et cest tout.
+CRUD complet :
+
+Projets (portfolio)
+
+Articles (blog)
+
+Modification et suppression du contenu
+
+
+Upload d’images pour :
+les projets
+les articles
+
+
+### --> Technologies utilisées
+
+Python 3
+
+Flask
+
+Flask-SQLAlchemy
+
+Flask-Login
+
+Jinja2
+
+SQLite (environnement local) --> Aprés je ferais des migrations
+
+HTML5 / CSS3
+
+JavaScript
+
+Werkzeug (secure_filename)
+
+### --> Structure du projet
+
+```
+Projet_Framework/
+│
+├── app/
+│   ├── __init__.py
+│   ├── extensions.py
+│   ├── models/
+│   │   ├── user.py
+│   │   ├── post.py
+│   │   └── portfolio.py
+│   │
+│   ├── routes/
+│   │   ├── auth.py
+│   │   ├── blog.py
+│   │   ├── contact.py
+│   │   ├── home.py
+│   │   ├── pages.py
+│   │   └── portfolio.py
+│   │       
+│   │
+│   ├── templates/
+│   │   ├── blog/
+│   │   ├── portfolio/
+│   │   └── index.html
+│   │
+│   └── static/
+│       ├── css/
+│       ├── img/
+│       └── uploads/
+│           ├── blog/
+│           └── portfolio/
+│
+├── instance/
+│   └── portfolio.db
+│
+├── config.py
+├── main.py
+├── requirements.txt
+└── README.md
+```
+
+
+
+### --> Installation
+
+- Cloner le projet
+  
+git clone <url-du-repo>
+
+cd Projet_Framework
+
+- Créer un environnement virtuel
+ 
+python -m venv venv
+
+source venv/bin/activate
+
+- Installer les dépendances
+ 
+pip install requirements.txt
+
+- Base de données
+  
+Base de données utilisée : SQLite
+
+Fichier : instance/portfolio.db
+
+ORM : SQLAlchemy
+
+Les modèles principaux sont :
+
+  User
+  Project
+  Post
+
+
+### --> Authentification
+
+Accès administrateur protégé avec Flask-Login
+
+Les routes de création / édition / suppression sont protégées par :
+
+@login_required
+
+Exemple :
+
+/portfolio/new
+
+/blog/new
+
+/portfolio/<id>/edit
+
+/blog/<id>/edit
+
+
+
+### --> Upload d’images
+
+Les images uploadées sont stockées dans :
+
+```
+  app/static/uploads/
+  ├── blog/
+  └── portfolio/
+``` 
+
+
+Les noms de fichiers sont sécurisés avec :
+
+secure_filename()
+
+
+### --> Sécurité
+
+Authentification requise pour les routes d’administration
+secure_filename pour les uploads
+
+Fichiers sensibles exclus du dépôt :
+
+instance/
+
+fichiers .db
+
+venv/
+
+
+
+
+Configuration prête pour variables d’environnement (SECRET_KEY)
+
+### --> Lancement du projet <--
+
+python main.py
+
+
+Puis ouvrir :
+
+http://127.0.0.1:5000
+
+
+### --> Remarques
+
+Projet conçu selon une architecture MVC simple
+
+Code organisé avec Blueprints
+
+Base solide pour des évolutions futures :
+
+Flask-WTF
+
+MySQL
+
+AJAX / Fetch
 
 
 
