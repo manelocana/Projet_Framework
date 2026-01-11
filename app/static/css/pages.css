@@ -13,6 +13,30 @@
 }
 
 
+.bio_content {
+    max-width: 800px;
+}
+
+.bio_image img {
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.bio_text {
+    flex: 1;
+}
+
+.bio_text p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.bio_text a {
+    margin-top: 40px;
+}
+
+
 @media(min-width: 768px) {
     .hero_pages {
         display: flex;
