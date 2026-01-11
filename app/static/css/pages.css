@@ -47,7 +47,7 @@
         background-image: linear-gradient(
             rgb(0,0,0,0.1),
             rgb(0,0,0,1)
-            ) ,url("../img/photo_computer.jpg");
+            ) ,url("../img/aboutme_camera.jpeg");
         background-position: center;
         background-size: cover;
     }
