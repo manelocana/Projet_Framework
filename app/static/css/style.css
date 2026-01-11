@@ -276,19 +276,19 @@ header button {
 }
 
 .card_desing{
-    background-image: url("../img/Branding-design.jpg");
+    background-image: url("../img/home_cards_1.jpeg");
 }
 
 .card_develope {
-    background-image: url("../img/website-development.png");;
+    background-image: url("../img/home_cards_2.jpeg");;
 }
 
 .card_modelling {
-    background-image: url("../img/illustration_modeling.jpeg");
+    background-image: url("../img/home_cards_3.jpeg");
 }
 
 .card_marketing {
-    background-image: url("../img/digital_marketing.jpeg");
+    background-image: url("../img/home_cards_4.jpeg");
 }
 
 .services .container {
