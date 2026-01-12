@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+{% endblock %}
+
+{% block content %}
+    <section class="form-page flex-center flex-column">
+        <div class="form-card">
+            <h2 class="text-center">Edit Biography</h2>
+
+            <form method="POST" class="form">
+                {{ form.hidden_tag() }}
+
+                <div class="form-group">
+                    {{ form.content.label }}
+                    {{ form.content(id="editor", rows=10) }}
+                </div>
+
+                <div class="form-actions">
+                    {{ form.submit(class="btn") }}
+                    <a href="{{ url_for('pages.pages') }}" class="btn btn-danger">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => console.error(error));
+    </script>
+{% endblock %}

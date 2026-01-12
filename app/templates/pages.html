@@ -20,31 +20,30 @@
 
 
     <section id="about">
-    <div class="container flex-center flex-column text-center">        
-        <div class="bio_content">
+    <div class="container">        
+        <div class="bio_content flex-center flex-column">
             <div class="bio_image">
                 <img src="{{ url_for('static', filename='img/pages-devweb.jpeg') }}" alt="Professional Photographer">
             </div>
 
             <div class="bio_text">
-                <p>
-                    Hello! I'm <strong>Alex Moreno</strong>, a professional photographer and founder of <em>Alex Moreno Photography</em>. 
-                    For over 10 years, I have captured unique moments, combining creativity and technique to tell stories through my images.
-                </p>
+                {% if about and about.content %}
+                    {{ about.content | safe }}
+                {% else %}
+                    <p>About empty</p>
+                {% endif %}
 
-                <p>
-                    My studio specializes in wedding photography, portraits, and commercial projects, offering personalized solutions for each client.
-                    We believe every photograph should convey emotion and authenticity.
-                </p>
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('pages.edit_about') }}" class="btn">
+                        {% if about and about.content %} Edit About {% else %} Add About {% endif %}
+                    </a>
+                {% endif %}
 
-                <p>
-                    When I'm not behind the camera, I dedicate my time to teaching photography and exploring new visual trends that inspire my work.
-                </p>
-
-                <a href="{{ url_for('portfolio.portfolio') }}" class="btn">
-                    View My Projects
-                </a>
+            
+                <br>
+                <a href="{{ url_for('portfolio.portfolio') }}" class="btn">View My Projects</a>
             </div>
+
         </div>
     </div>
     </section>
