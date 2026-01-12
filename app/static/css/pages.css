@@ -37,6 +37,15 @@
     margin-top: 40px;
 }
 
+.form-group {
+    margin: 50px;
+    
+}
+
+.form-actions {
+    gap: 2rem;
+    margin: 40px;
+}
 
 @media(min-width: 768px) {
     .hero_pages {
