@@ -20,13 +20,13 @@
 
 
     <section id="about">
-    <div class="container">        
-        <div class="bio_content flex-center flex-column">
-            <div class="bio_image">
+    <div class="container flex-center">        
+        <div class="bio_content">
+            <div class="bio_image text-center">
                 <img src="{{ url_for('static', filename='img/pages-devweb.jpeg') }}" alt="Professional Photographer">
             </div>
 
-            <div class="bio_text">
+            <div class="bio_text text-center">
                 {% if about and about.content %}
                     {{ about.content | safe }}
                 {% else %}
