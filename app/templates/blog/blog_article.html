@@ -16,7 +16,7 @@
             <img src="{{ url_for('static', filename='uploads/blog/' ~ post.image) }}" alt="post_image">
         {% endif %}
 
-        <p>{{ post.content }}</p>
+        <p>{{ post.content| safe }}</p>
 
         {% if current_user.is_authenticated %}
             <div class="blog-article-actions">

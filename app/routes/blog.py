@@ -5,9 +5,8 @@ from app.models.post import Post
 from app.extensions import db
 import os
 from werkzeug.utils import secure_filename
-
 from flask_login import login_required
-
+from app.forms.blog import BlogForm
 
 
 
@@ -62,17 +61,20 @@ def blog_new():
 @login_required
 def blog_edit(post_id):
     post = Post.query.get_or_404(post_id)
-    if request.method == 'POST':
-        post.title = request.form['title']
-        post.content = request.form.get('content')
-        image_file = request.files.get('image')
+    form = BlogForm(obj=post)
 
-        image_filename=None
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.content = form.content.data
+
+        # voir si on monte le img
+        image_file = request.files.get('image')
         if image_file and image_file.filename:
             image_filename = secure_filename(image_file.filename)
             upload_path = os.path.join(current_app.config['UPLOAD_FOLDER'], 'blog')
             os.makedirs(upload_path, exist_ok=True)
 
+            # effacer img anncienne
             if post.image:
                 old_path = os.path.join(upload_path, post.image)
                 if os.path.exists(old_path):
@@ -83,7 +85,7 @@ def blog_edit(post_id):
 
         db.session.commit()
         return redirect(url_for('blog.blog_article', post_id=post.id))
-    return render_template('blog/blog_edit.html', post=post)
+    return render_template('blog/blog_edit.html', post=post, form=form)
 
 
 @blog_bp.route('/blog/<int:post_id>/delete', methods=['POST'])
