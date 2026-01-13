@@ -167,19 +167,11 @@ header a:hover {
     color: blue;
 }
 
+
 header .search {
-    margin-bottom: 30px;
-    margin-top: 20px;
+    margin: 50px;
 }
 
-header input {
-    padding: 5px;
-    margin: 10px;
-}
-
-header button {
-    font-size: 0.9em;
-}
 
 .hero .container {
     background-color: black;

@@ -9,12 +9,14 @@ from app.routes.auth import auth_bp
 
 from app.extensions import db, login_manager
 
+from config import Config
+
 
 
 def create_app():
     app = Flask(__name__)
 
-    app.config.from_object("config.Config")
+    app.config.from_object(Config)
 
     db.init_app(app)
     

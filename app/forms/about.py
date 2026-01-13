@@ -10,4 +10,4 @@ from wtforms.validators import DataRequired
 
 class AboutForm(FlaskForm):
     content = TextAreaField('Biography', validators=[DataRequired()])
-    submit = SubmitField('Save changes')
+    save = SubmitField('Save changes')
