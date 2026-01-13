@@ -8,4 +8,4 @@ home_bp = Blueprint('home', __name__)
 @home_bp.route('/')
 def home():
     projects = Project.query.order_by(Project.id.desc()).all()
-    return render_template('home.html', projects=projects, title='Home', search_button=True)
+    return render_template('home.html', projects=projects, title='Home')

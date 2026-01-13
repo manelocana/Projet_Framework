@@ -5,4 +5,4 @@ contact_bp = Blueprint('contact', __name__)
 
 @contact_bp.route('/contact')
 def contact():
-    return render_template('contact.html', search_button=False)
+    return render_template('contact.html')

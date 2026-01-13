@@ -1,8 +1,6 @@
 {% extends 'index.html' %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
     <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
 {% endblock %}
 
@@ -16,7 +14,8 @@
             <img src="{{ url_for('static', filename='uploads/blog/' ~ post.image) }}" alt="post_image">
         {% endif %}
 
-        <p>{{ post.content| safe }}</p>
+        <!-- pour sauter la securite html5 et voir le contenu correctement, sans les <p></p>  |safe  -->
+        <p>{{ post.content | safe }}</p>
 
         {% if current_user.is_authenticated %}
             <div class="blog-article-actions">

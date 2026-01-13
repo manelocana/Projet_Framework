@@ -1,7 +1,6 @@
 {% extends 'index.html' %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
 {% endblock %}
 
@@ -27,7 +26,9 @@
                 <label for="image">Image</label>
                 <input type="file" id="image" name="image">
                 {% if post.image %}
-                    <p>Current image: <img src="{{ url_for('static', filename='uploads/blog/' ~ post.image) }}" height="80"></p>
+                    <p>Current image: 
+                        <img src="{{ url_for('static', filename='uploads/blog/' ~ post.image) }}" height="80" alt="image blog">
+                    </p>
                 {% endif %}
             </div>
 

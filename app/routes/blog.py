@@ -13,13 +13,14 @@ from app.forms.blog import BlogForm
 blog_bp = Blueprint('blog', __name__)
 
 
+# routes estatiques
 """ @blog_bp.route('/blog')
 def blog():
-    return render_template('blog/blog.html', search_button=True) """
+    return render_template('blog/blog.html') """
 
 """ @blog_bp.route('/blog/article')
 def blog_article():
-    return render_template('blog/blog_article.html', search_button=True) """
+    return render_template('blog/blog_article.html') """
 
 
 

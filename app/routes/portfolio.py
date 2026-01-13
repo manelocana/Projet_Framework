@@ -12,15 +12,15 @@ portfolio_bp = Blueprint('portfolio', __name__)
 # routes static, for starting test
 """ @portfolio_bp.route('/portfolio')
 def portfolio():
-    return render_template('portfolio.html', search_button=True)
+    return render_template('portfolio.html')
 
 @portfolio_bp.route('/portfolio/projet_1')
 def projet_1():
-    return render_template('portfolio/projet_1.html', search_button=True)
+    return render_template('portfolio/projet_1.html')
 
 @portfolio_bp.route('/portfolio/projet1_photos')
 def projet1_photos():
-    return render_template('portfolio/projet1_photos.html', search_button=True) """
+    return render_template('portfolio/projet1_photos.html') """
 
 
 
@@ -39,8 +39,6 @@ def portfolio():
 def portfolio_project(project_id):
     project = Project.query.get_or_404(project_id)
     return render_template('portfolio/projects/portfolio_project.html', project=project)
-    # for dynamic db
-    # return render_template(f'portfolio/projects/project_{project.id}.html', project=project)
 
 
 @portfolio_bp.route('/portfolio/new', methods=['GET', 'POST'])
