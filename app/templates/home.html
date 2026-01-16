@@ -10,10 +10,11 @@
 
     <section class="hero">
         <img src="{{ url_for('static', filename='img/home_hero_camera.jpeg') }}" alt="camera_home">
+        
         <div class="container">
             <h1>WE MAKE CREATIVE THINGS EVERYDAY</h1>
             <p>We are digital agency that helps immersive and engaging user experiences that</p>
-            <a href="#img_scroll">VIEW OUR WORKS</a>
+            <a href="#img_scroll" class="btn">VIEW OUR WORKS</a>
         </div>
     </section>
 
@@ -21,36 +22,37 @@
         <div class="container">
             <address>
                 27 Division St, New York,<br>NY 10002, USA<br>
-                +1800 123 654<br><br><a href="mailto:987frisk.agency@gmail.com">987frisk.agency@gmail.com</a>
+                +1800 123 654<br><br>
+                <a href="mailto:987frisk.agency@gmail.com">987frisk.agency@gmail.com</a>
             </address>
         </div>
         <p class="slogan-flexibility">UNPARALLELED FLEXIBILITY * WE GIVE UNPARALLELED FIELD</p>
     </section>
 
-    <section id="cards">
+    <section class="cards">
         <h2>WHAT WE CAN DO FOR OUR CLIENTS</h2>
-        <div class="container">
+        <div class="container cards-2">
+
             <div class="card_desing">
                 <h3>Branding Desing</h3>
-                <p>branding desing</p>
-                <a href="{{ url_for('pages.branding') }}">VIEW DETAILS</a>
-
+                <a href="{{ url_for('pages.branding') }}" class="btn">VIEW DETAILS</a>
             </div>
+            
             <div class="card_develope">
                 <h3>AlbumPhoto Developement</h3>
-                <p>Websitedevelopee</p>
-                <a href="{{ url_for('pages.branding') }}">VIEW DETAILS</a>
+                <a href="{{ url_for('pages.branding') }}" class="btn">VIEW DETAILS</a>
             </div>
+
             <div class="card_modelling">
                 <h3>Illustration Modelling</h3>
-                <p>modelo de ilustracion</p>
-                <a href="{{ url_for('pages.branding') }}">VIEW DETAILS</a>
+                <a href="{{ url_for('pages.branding') }}" class="btn">VIEW DETAILS</a>
             </div>
+
             <div class="card_marketing">
                 <h3>Digital Marketing</h3>
-                <p>digital marketing</p>
-                <a href="{{ url_for('pages.branding') }}">VIEW DETAILS</a>
+                <a href="{{ url_for('pages.branding') }}" class="btn">VIEW DETAILS</a>
             </div>
+            
         </div>
     </section>
 
@@ -85,7 +87,7 @@
         
     </section>
 
-    <section class="events">
+    <section class="events flex-column">
         <div class="container">
             <br>
             <hr>
@@ -132,26 +134,42 @@
         </div>
     </section>
 
-    <section id="cards_articles">
+    <section class="cards">
         <h2>Read Our Articles and News</h2>
-        <div class="container">
-            <div class="card_return">
-                <h4>March 26, 2024 - Branding</h4>
+
+        <div class="container cards-3">
+
+        {% for post in posts %}
+            {% set image_url = url_for('static', filename='uploads/blog/' + post.image) %}
+
+            <div class="card" style="background-image: url('{{ image_url }}');">
+                <h3>{{ post.title }}</h3>
+                <a href="{{ post.url }}">Leer más</a>
+            </div>
+        {% endfor %}  
+
+
+
+
+
+            <!-- <div class="card_return">
+                <h4>November 26, 2025 - Branding</h4>
                 <h3>Everything You Should Know About Return</h3>
-                <a href="{{ url_for('blog.blog') }}">READ MORE</a>
+                <a href="{{ url_for('blog.blog') }}" class="btn">READ MORE</a>
             </div>
 
             <div class="card_result">
-                <h4>March 26, 2024 - Branding</h4>
+                <h4>January 14, 2024 - PhotoShow</h4>
                 <h3>6 Big Commerce Desing Tips For Big Results</h3>
-                <a href="{{ url_for('blog.blog') }}">READ MORE</a>
+                <a href="{{ url_for('blog.blog') }}" class="btn">READ MORE</a>
             </div>
 
             <div class="card_usability">
                 <h4>March 26, 2024 - Branding</h4>
                 <h3>Four Steps to Conduct a Successful Usability</h3>
-                <a href="{{ url_for('blog.blog') }}">READ MORE</a>
-            </div>
+                <a href="{{ url_for('blog.blog') }}" class="btn">READ MORE</a>
+            </div> -->
+
         </div>
     </section>
 
@@ -162,7 +180,7 @@
                 We shift your from today's reality to tomorrow's
                 potential, ensuring.
             </p>
-            <a href="mailto:987frisk.agency@mail.com">LET'S TALK WITH US</a>
+            <a href="mailto:987frisk.agency@mail.com" class="btn">LET'S TALK WITH US</a>
         </div>
     </section>
 
