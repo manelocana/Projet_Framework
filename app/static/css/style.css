@@ -1,4 +1,11 @@
 
+/* definimos la paleta de colores
+:root {
+
+} */
+
+
+
 
 * {
     box-sizing: border-box;
@@ -9,31 +16,14 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: system-ui, -apple-system, sans-serif;
     margin: 0px;
+    line-height: 1.6;
 }
 
-.flex {
-    display: flex;
-}
-
-.flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.flex-column {
-    display: flex;
-    flex-direction: column;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.w-100 {
+img {
     width: 100%;
+    border-radius: 6px;
 }
 
 h1 {font-size: 3.5em;}
@@ -43,6 +33,17 @@ h4 {font-size: 1.5em;}
 p {font-size: 1.25em;}
 ul {list-style: none;}
 li {font-size: 1.2em;}
+
+
+
+
+
+.container {
+    width: 100%;
+    padding: 0 16px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
 
 button, 
 .hero a,
@@ -93,19 +94,39 @@ button:hover,
     background-color: rgba(255, 0, 0, 0.692);
 }
 
-.input {
-    margin-bottom: 20px;
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 1em;
+
+
+
+
+
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
-.input:focus {
-    outline: none;
-    border-color: rgb(0,0,0);
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
 }
+
+.text-center {
+    text-align: center;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+
+
+
+
 
 
 .login-section {
@@ -126,19 +147,13 @@ button:hover,
 }
 
 
-.container {
-    padding: 20px;
-}
+
+
+
+
 
 header {
     background-color: beige;
-}
-
-header .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
 }
 
 header .logo {
@@ -161,6 +176,7 @@ header a {
     text-decoration: none;
     font-weight: bold;
     color:black
+    
 }
 
 header a:hover {
@@ -168,9 +184,7 @@ header a:hover {
 }
 
 
-header .search {
-    margin: 50px;
-}
+
 
 
 .hero .container {
