@@ -8,15 +8,16 @@
 
 {% block content %}
 
-    <section class="hero">
+    <section class="hero-home">
         <img src="{{ url_for('static', filename='img/home_hero_camera.jpeg') }}" alt="camera_home">
         
         <div class="container">
             <h1>WE MAKE CREATIVE THINGS EVERYDAY</h1>
             <p>We are digital agency that helps immersive and engaging user experiences that</p>
-            <a href="#img_scroll" class="btn">VIEW OUR WORKS</a>
+            <a href="{{ url_for('portfolio.portfolio') }}" class="btn">VIEW OUR WORKS</a>
         </div>
     </section>
+
 
     <section class="banner">
         <div class="container">
@@ -28,6 +29,7 @@
         </div>
         <p class="slogan-flexibility">UNPARALLELED FLEXIBILITY * WE GIVE UNPARALLELED FIELD</p>
     </section>
+
 
     <section class="cards">
         <h2>WHAT WE CAN DO FOR OUR CLIENTS</h2>
@@ -56,9 +58,10 @@
         </div>
     </section>
 
+
     <section class="services">
         <div class="container">
-            <img src="{{ url_for('static', filename='img/paisage1.jpeg') }}" alt="services">
+            <img src="{{ url_for('static', filename='img/paisage1.jpeg') }}" alt="services img">
             <div class="container_del_container">
                 <h2>WE OFFER A WIDE RANGE OF BRAND SERVICES</h2>
                 <p>We are a creative agency working with brands building insighful strategy, creating unique desings and crafting value</p>
@@ -71,6 +74,7 @@
             </div>
         </div>
     </section>
+
 
     <section id="img_scroll">
         <div class="container">
@@ -86,6 +90,7 @@
         </div>
         
     </section>
+
 
     <section class="events flex-column">
         <div class="container">
@@ -134,6 +139,7 @@
         </div>
     </section>
 
+
     <section class="cards">
         <h2>Read Our Articles and News</h2>
 
@@ -149,35 +155,14 @@
 
             <div class="card" style="background-image: url('{{ image_url }}');">
                 <h3>{{ post.title }}</h3>
-                <a href="{{ post.url }}" class="btn">Leer más</a>
+                <a href="{{ url_for('blog.blog') }}" class="btn">READ MORE</a>
             </div>
 
         {% endfor %}  
 
-
-
-
-
-            <!-- <div class="card_return">
-                <h4>November 26, 2025 - Branding</h4>
-                <h3>Everything You Should Know About Return</h3>
-                <a href="{{ url_for('blog.blog') }}" class="btn">READ MORE</a>
-            </div>
-
-            <div class="card_result">
-                <h4>January 14, 2024 - PhotoShow</h4>
-                <h3>6 Big Commerce Desing Tips For Big Results</h3>
-                <a href="{{ url_for('blog.blog') }}" class="btn">READ MORE</a>
-            </div>
-
-            <div class="card_usability">
-                <h4>March 26, 2024 - Branding</h4>
-                <h3>Four Steps to Conduct a Successful Usability</h3>
-                <a href="{{ url_for('blog.blog') }}" class="btn">READ MORE</a>
-            </div> -->
-
         </div>
     </section>
+
 
     <section id="lets_create">
         <div class="container">

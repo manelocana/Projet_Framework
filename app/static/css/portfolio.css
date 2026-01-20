@@ -1,6 +1,6 @@
 
 
-.hero_portfolio {
+/* .hero_portfolio {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,7 +20,7 @@
     background-color: transparent;
     color: black; 
     margin-top: 20px;
-}
+} */
 
 
 .add_new_project {
@@ -90,7 +90,7 @@
 
 
 @media(min-width: 768px) {
-    .hero_portfolio {
+    /* .hero_portfolio {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -112,7 +112,7 @@
 
     .hero_portfolio img {
         display: none;
-    }
+    } */
 
     #cards_portfolio h2 {
         margin-top: 150px;

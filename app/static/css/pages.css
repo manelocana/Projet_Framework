@@ -1,16 +1,16 @@
 
 
-.hero_pages .container {
+/* .hero .container {
     background-color: white;
     color: black;
     text-align: center;
 }
 
-.hero_pages img {
+.hero img {
     width: 100%;
     max-width: 500px;
     padding: 20px;
-}
+} */
 
 
 .bio_content {
@@ -46,7 +46,7 @@
 }
 
 @media(min-width: 768px) {
-    .hero_pages {
+    /* .hero {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -59,16 +59,16 @@
         background-size: cover;
     }
 
-    .hero_pages .container {
+    .hero .container {
         background-color: transparent;
         margin: 0 auto;
         font-size: 2rem;
         color: aliceblue;
     }
 
-    .hero_pages img {
+    .hero img {
         display: none;
-    }
+    } */
 
     #cards_pages_txt .container {
         display: grid;

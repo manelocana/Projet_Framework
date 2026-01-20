@@ -9,7 +9,7 @@
 
 {% block content %}
 
-    <section class="hero_pages">
+    <section class="hero">
         <img src="{{ url_for('static', filename='img/aboutme_camera.jpeg') }}" alt="contact image">
         <div class="container">
             <h1>About me</h1>
@@ -37,7 +37,6 @@
                     </a>
                 {% endif %}
 
-            
                 <br>
                 <a href="{{ url_for('portfolio.portfolio') }}" class="btn">View My Projects</a>
             </div>
@@ -47,7 +46,7 @@
     </section>
 
 
-    <section id="cards">
+    <section class="cards">
         <h2>WHAT WE CAN DO FOR OUR CLIENTS</h2>
         <div class="container">
             <div class="card_desing">
