@@ -72,6 +72,15 @@ img {
     width: 100%;
 }
 
+
+button.btn {
+    pointer-events: auto;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+
 .btn {
     font-size: 1.2em;
     font-weight: bold;
@@ -96,7 +105,7 @@ img {
     background-color: rgba(255, 0, 0, 0.692);
 }
 
-a:hover {
+.btn-danger:hover {
     color: rgb(116, 1, 178);
 }
 
@@ -143,8 +152,6 @@ a:hover {
 
 
 
-
-
 header {
     background-color: beige;
 }
@@ -171,9 +178,6 @@ header a {
     font-weight: bold;
     color:black
 }
-
-
-
 
 
 
@@ -243,10 +247,6 @@ header a {
 
 
 
-
-
-
-
 .cards h2 {
     padding:20px;
     text-align: center;
@@ -272,6 +272,7 @@ header a {
     top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(0,0,0,0.5);
     z-index: 0;
+    pointer-events: none;
 }
 
 .cards h3,
@@ -339,8 +340,6 @@ header a {
 
 
 
-
-
 .services .container {
     text-align: center;
     margin-top: 20px;
@@ -375,8 +374,6 @@ header a {
 
 
 
-
-
 .scroll_container {
     overflow: auto;   
     background-color: #333;
@@ -400,8 +397,6 @@ header a {
 
 
 
-
-
 .events {
     margin: 30px;
 }
@@ -412,10 +407,6 @@ header a {
     background-color: greenyellow;
     text-align: center;
 }
-
-
-
-
 
 
 
@@ -444,14 +435,6 @@ header a {
     text-align: center;
     padding: 50px;
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -540,16 +523,6 @@ header a {
 
 
 
-
-
-
-
-
-
-
-
-
-
 @media(min-width: 1024px) {
 
     h1 { font-size: 4em; }
@@ -596,12 +569,6 @@ header a {
 
 
 
-
-
-
-
-
-
     .hero-home img {
         display: block;
         width: 500px;
@@ -638,10 +605,6 @@ header a {
 
 
 
-
-
-
-
     .hero {
         display: flex;
         flex-direction: column;
@@ -671,7 +634,6 @@ header a {
 
 
 
-
     .banner address {
         display: flex;
         justify-content: center;
@@ -691,9 +653,6 @@ header a {
 
 
 
-
-
-
     .cards h2 {
         margin-top: 150px;
         margin-bottom: 0px;
@@ -706,11 +665,6 @@ header a {
     .cards-3 {
         grid-template-columns: repeat(3, 1fr);
     }
-
-
-
-
-
 
 
 
@@ -759,8 +713,6 @@ header a {
         width: 60%;
     }
     
-
-
 
 
 

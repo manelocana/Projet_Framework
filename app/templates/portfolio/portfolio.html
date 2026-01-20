@@ -31,7 +31,7 @@
             
             {% for project in projects %}
 
-                <div class="">
+                <div class="cards_portfolio">
                     <a href="{{ url_for('portfolio.portfolio_project', project_id=project.id) }}">
 
                         {% if project.image %}
@@ -44,7 +44,7 @@
                     <br>
                     
                     {% if current_user.is_authenticated %}
-                        <div class="form-actions">
+                        <div class="form-actions a">
                             <a href="{{ url_for('portfolio.portfolio_edit', project_id=project.id) }}" class="btn">
                                 Edit project
                             </a>
@@ -53,6 +53,7 @@
                                 method="POST"
                                 style="display:inline;"
                                 onsubmit="return confirm('Delete project?');">
+                                
                                 <button class="btn btn-danger">Delete</button>
                             </form>
                         </div>
