@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 from app.models.portfolio import Project
+from app.models.post import Post
 
 
 home_bp = Blueprint('home', __name__)
@@ -7,16 +8,10 @@ home_bp = Blueprint('home', __name__)
 
 
 def get_projects():
-    projects = Project.query.order_by(Project.id.desc()).all()
-    return render_template('home.html', projects=projects, title='Home')
+    return Project.query.order_by(Project.id.desc()).all()
 
-def get_posts():
-    posts = [
-        {"title": "Primer Post", "image": "home_cards_1.jpeg", "url": "/post/1"},
-        {"title": "Segundo Post", "image": "home_cards_2.jpeg", "url": "/post/2"},
-        {"title": "Tercer Post", "image": "home_cards_3.jpeg", "url": "/post/3"},
-    ]
-    return render_template('home.html', posts=posts)
+def get_posts(limit=3):
+    return Post.query.order_by(Post.id.desc()).limit(limit).all()
 
 
 @home_bp.route('/')

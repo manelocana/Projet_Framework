@@ -140,12 +140,18 @@
         <div class="container cards-3">
 
         {% for post in posts %}
-            {% set image_url = url_for('static', filename='uploads/blog/' + post.image) %}
+            
+            {% if post.image %}
+                {% set image_url = url_for('static', filename='uploads/blog/' ~ post.image) %}
+            {% else %}
+                {% set image_url = url_for('static', filename='img/default_img.jpg') %}
+            {% endif %}
 
             <div class="card" style="background-image: url('{{ image_url }}');">
                 <h3>{{ post.title }}</h3>
-                <a href="{{ post.url }}">Leer más</a>
+                <a href="{{ post.url }}" class="btn">Leer más</a>
             </div>
+
         {% endfor %}  
 
 
