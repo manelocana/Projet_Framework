@@ -215,6 +215,9 @@ header a {
     margin-top: 20px;
 }
 
+.hero img {
+    display: none;
+}
 
 
 
@@ -291,6 +294,8 @@ header a {
 
 
 
+
+
 .card_desing{
     background-image: url("../img/home_cards_1.jpeg");
 }
@@ -320,6 +325,12 @@ header a {
 
 .card_usability {
     background-image: url("../img/illustration_modeling.jpeg");
+}
+
+
+
+.card_contact {
+    background-image: url("../img/image_cards_contact.jpeg");
 }
 
 
@@ -540,6 +551,13 @@ header a {
 
 
 @media(min-width: 1024px) {
+
+    h1 { font-size: 4em; }
+    h2 { font-size: 3em; }
+    h3 { font-size: 2.4em; }
+    p  { font-size: 2em; }
+
+
     header {
         position: sticky;
         top: 0;
@@ -622,7 +640,7 @@ header a {
 
 
 
-    
+
 
     .hero {
         display: flex;
@@ -742,13 +760,6 @@ header a {
     }
     
 
-
-
-
-
-
-
-    
 
 
 

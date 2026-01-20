@@ -8,22 +8,21 @@
 
 {% block content %}
 
-    <section class="hero">
-        <img src="{{ url_for('static', filename='img/devs_hablando.jpeg') }}" alt="contact image">
+    <section class="hero hero-contact">
+        <img src="{{ url_for('static', filename='img/aboutme_alexmore.jpg') }}" alt="contact image">
         <div class="container">
             <h1>Contact</h1>
         </div>
     </section>
 
-    <section id="cards">
-        <h2>Contact</h2>
-        <div class="container">
-            <div class="card_desing">
+    <section class="cards">
+        <div class="container cards-3">
+            <div class="card_contact">
                 <h3>Email Address</h3>
                 <p>frisk.agency@mail.com</p>
                 <a href="mailto:frisk.agency@mail.com" class="btn">SEND MESSAGE</a>
             </div>
-            <div class="card_develope">
+            <div class="card_contact">
                 <h3>Headquarters</h3>
                 <p>27 Division St, New York,<br>
                 NY 10002, Usa</p>
@@ -35,10 +34,12 @@
                 </a>
 
             </div>
-            <div class="card_modelling">
+
+            <div class="card_contact">
                 <h3>Phone Number</h3>
                 <p>+1800 123 654 987</p>
             </div>
+
         </div>
     </section>
 

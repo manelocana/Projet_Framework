@@ -1,14 +1,14 @@
 
-#blog h2 {
+/* #blog h2 {
     text-align: center;
     padding: 20px;
     color: black;
-}
+} */
 
-.blog_container {
+/* .blog_container {
     margin-top: 20px;
     margin-bottom: 200px;
-}
+} */
 
 .blog_card {
     background-color: white;
@@ -61,14 +61,13 @@
 
 
 @media (min-width: 768px) {
-    #blog {
+    /* #blog {
         display: flex;
         justify-content: center;
-    }
+    } */
 
     #blog .container {
         width: 60%;         
-        text-align: center; 
     }
 
     .blog_card {

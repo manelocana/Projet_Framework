@@ -17,14 +17,14 @@
     </section>
 
 
-    <section id="about">
+    <section class="about">
     <div class="container flex-center">        
-        <div class="bio_content">
-            <div class="bio_image text-center">
-                <img src="{{ url_for('static', filename='img/pages-devweb.jpeg') }}" alt="Professional Photographer">
+        <div class="about_content">
+            <div class="about_image text-center">
+                <img src="{{ url_for('static', filename='img/pages_devweb.jpg') }}" alt="Professional Photographer">
             </div>
 
-            <div class="bio_text text-center">
+            <div class="about_text text-center">
                 {% if about and about.content %}
                     {{ about.content | safe }}
                 {% else %}
@@ -48,7 +48,7 @@
 
     <section class="cards">
         <h2>WHAT WE CAN DO FOR OUR CLIENTS</h2>
-        <div class="container">
+        <div class="container cards-2">
             <div class="card_desing">
                 <h3>Branding Desing</h3>
                 <p>branding desing</p>

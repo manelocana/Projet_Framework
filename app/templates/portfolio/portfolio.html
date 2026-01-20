@@ -13,13 +13,13 @@
         <div class="hero">
             <img src="{{ url_for('static', filename='img/aboutme_alexmore.jpeg') }}" alt="photo_computer">
             <div class="container">
-                <h2>Portfolio</h2>
+                <h1>Portfolio</h1>
             </div>
         </div>
     </section>
 
-    
-    <section id="cards_portfolio">
+
+    <section class="cards">
 
         {% if current_user.is_authenticated %}
             <div class="add_new_project">
@@ -27,11 +27,11 @@
             </div>
         {% endif %}
 
-        <div class="container">
+        <div class="container cards-2">
             
             {% for project in projects %}
 
-                <div class="card_decentralized">
+                <div class="">
                     <a href="{{ url_for('portfolio.portfolio_project', project_id=project.id) }}">
 
                         {% if project.image %}

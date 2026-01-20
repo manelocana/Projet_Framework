@@ -9,11 +9,19 @@
 
 {% block content %}
 
+    <section>
+        <div class="hero">
+            <img src="{{ url_for('static', filename='img/aboutme_alexmore.jpeg') }}" alt="photo_computer">
+            <div class="container">
+                <h1>Blog</h1>
+            </div>
+        </div>
+    </section>
+
+
+
 <section id="blog" class="blog_section">
-
     <div class="container">
-        <h2>BLOG</h2>
-
         <div class="blog_container">
 
             {% if current_user.is_authenticated %}
@@ -21,7 +29,6 @@
             {% endif %}
 
             {% for post in posts %}
-
                 <div class="blog_card">
 
                     {% if post.image %}
@@ -42,7 +49,6 @@
 
         </div>
     </div>
-
 </section>
 
 {% endblock %}

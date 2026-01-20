@@ -1,5 +1,5 @@
 
-
+/* 
 .hero .container {
     background-color: white;
     color: black;
@@ -10,11 +10,12 @@
     width: 100%;
     max-width: 500px;
     padding: 20px;
-}
+} */
 
 #cards h2 {
     display: none;
     text-align: center;
+    color: aliceblue;
 }
 
 #cards p {
@@ -23,6 +24,7 @@
     background-color:black;
     border-radius: 8px;
     padding: 5px;
+    color: aliceblue;
 }
 
 #map_container h2 {
@@ -61,7 +63,7 @@ form textarea {
 
 
 @media(min-width: 768px) {
-       .hero {
+       /* .hero {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -83,16 +85,31 @@ form textarea {
 
     .hero img{
         display: none;
+    } */
+
+    .hero-contact {
+        background-image: linear-gradient(
+            rgb(0,0,0,0.1),
+            rgb(0,0,0,1)
+            ) ,url("../img/devs_hablando.jpeg");
     }
 
-    #cards h2 {
+
+    /* #cards h2 {
         display:block;
         text-align: center;
-    }
+    } */
 
-    #cards p {
+    /* #cards p {
         text-align: center;
     }
+ */
+
+
+
+
+
+
 
     #map_container {
         display: flex;
