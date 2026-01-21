@@ -19,16 +19,22 @@
         font-weight: 800;
     } */
 
-    .portfolio-img {
+    /* .portfolio-img {
         transition: transform .3s ease, box-shadow .3s ease;
         cursor: pointer;
         width: 600px;;
     }
+ */
 
-    .portfolio-img:hover {
+    .card-item img {
+        width: 500px;
+        height: 350px;
+    }
+
+    /* .portfolio-img:hover {
         transform: scale(1.03);
         box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
+    } */
 
     .cta-section {
         background: #000;
@@ -63,17 +69,17 @@
     <div class="container flex-column">
         <div class="card-item">
             <a href="{{ url_for('portfolio.portfolio_static_project', page='projet1_photos') }}" target="_blank">
-                <img src="{{ url_for('static', filename='img/paisage1.jpeg') }}" class="img-fluid rounded portfolio-img">
+                <img src="{{ url_for('static', filename='img/paisage1.jpeg') }}" alt="img_paisage">
             </a>
         </div>
         <div class="card-item">
             <a href="{{ url_for('portfolio.portfolio_static_project', page='projet1_photos') }}" target="_blank">
-                <img src="{{ url_for('static', filename='img/paisage2.jpeg') }}" class="img-fluid rounded portfolio-img">
+                <img src="{{ url_for('static', filename='img/paisage2.jpeg') }}" alt="img_paisage">
             </a>
         </div>
         <div class="card-item">
             <a href="{{ url_for('portfolio.portfolio_static_project', page='projet1_photos') }}" target="_blank">
-                <img src="{{ url_for('static', filename='img/paisage1.jpeg') }}" class="img-fluid rounded portfolio-img">
+                <img src="{{ url_for('static', filename='img/paisage1.jpeg') }}" alt="img_paisage">
             </a>
         </div>
     </div>

@@ -13,10 +13,9 @@
 <section class="blog-article-page">
     <div class="blog-article-container flex-column flex-center">
         <h1>{{ post.title }}</h1>
-        <h2>aaaaaaaaaaaaaaa</h2>
 
         {% if post.image %}
-            <img src="{{ url_for('static', filename='uploads/blog/' ~ post.image) }}" alt="post_image" style="max-width: 600px;">
+            <img src="{{ url_for('static', filename='uploads/blog/' ~ post.image) }}" alt="post_image" class="blog_article_img;">
         {% endif %}
 
         <!-- pour sauter la securite html5 et voir le contenu correctement, sans les <p></p>  |safe  -->

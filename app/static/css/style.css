@@ -444,11 +444,15 @@ header a {
 
 #footer .container small {
     display: block;
-    text-align: center;
     padding: 50px;
 }
 
-
+#footer small {
+        display: block;
+        grid-column: 1 / -1;
+        text-align: center;
+        margin-top: 80px;
+    }
 
 
 
@@ -767,7 +771,7 @@ header a {
         display: block;
         grid-column: 1 / -1;
         text-align: center;
-        margin-top: 70px;
+        margin-top: 80px;
     }
 
 }
