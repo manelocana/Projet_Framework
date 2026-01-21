@@ -354,7 +354,7 @@ header a {
 
 .services .container {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 100px;
     margin-bottom: 100px;
     background-color: rgb(232, 255, 127);
 }
@@ -391,6 +391,7 @@ header a {
     background-color: #333;
     white-space: nowrap;
     padding: 10px;
+    margin-bottom: 100px;
 }
 
 .scroll_container img {

@@ -1,16 +1,5 @@
 
 
-/* .hero .container {
-    background-color: white;
-    color: black;
-    text-align: center;
-}
-
-.hero img {
-    width: 100%;
-    max-width: 500px;
-    padding: 20px;
-} */
 
 
 .about_content {
@@ -18,23 +7,9 @@
     margin-top: 50px;
 }
 
-/* .about_image img {
-    width: 300px;
-} */
-
-
-
-/* .about_text p {
-    margin-bottom: 15px;
-    line-height: 1.6;
-} */
-
 .about_text a {
     margin-top: 40px;
 }
-
-
-
 
 .form-group {
     margin: 50px;
@@ -48,8 +23,6 @@
 
 
 
-
-
 @media(min-width: 768px) {
 
     .about img{
@@ -57,38 +30,5 @@
         height: auto;
         margin-top: 50px;
     }
-
-
-    /* .hero {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 60vh;
-        background-image: linear-gradient(
-            rgb(0,0,0,0.1),
-            rgb(0,0,0,1)
-            ) ,url("../img/aboutme_camera.jpeg");
-        background-position: center;
-        background-size: cover;
-    }
-
-    .hero .container {
-        background-color: transparent;
-        margin: 0 auto;
-        font-size: 2rem;
-        color: aliceblue;
-    }
-
-    .hero img {
-        display: none;
-    } */
-
-   /*  .cards_pages_txt {
-        display: grid;
-        grid-template-columns: repeat(3,1fr);
-        margin-bottom: 100px;
-        padding: 40px;
-        margin-top: 100px;
-    } */
 
 }

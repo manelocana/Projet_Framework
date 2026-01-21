@@ -1,14 +1,5 @@
 
-/* #blog h2 {
-    text-align: center;
-    padding: 20px;
-    color: black;
-} */
 
-/* .blog_container {
-    margin-top: 20px;
-    margin-bottom: 200px;
-} */
 
 .blog_card {
     background-color: white;
@@ -61,10 +52,6 @@
 
 
 @media (min-width: 768px) {
-    /* #blog {
-        display: flex;
-        justify-content: center;
-    } */
 
     #blog .container {
         width: 60%;         
@@ -83,8 +70,7 @@
     }
 
 
-
-
+    
     .blog-article-page {
     padding: 80px 20px;
     }
