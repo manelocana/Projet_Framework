@@ -9,18 +9,6 @@ from flask_login import login_required
 
 portfolio_bp = Blueprint('portfolio', __name__)
 
-# routes static, for starting test
-""" @portfolio_bp.route('/portfolio')
-def portfolio():
-    return render_template('portfolio.html')
-
-@portfolio_bp.route('/portfolio/projet_1')
-def projet_1():
-    return render_template('portfolio/projet_1.html')
-
-@portfolio_bp.route('/portfolio/projet1_photos')
-def projet1_photos():
-    return render_template('portfolio/projet1_photos.html') """
 
 
 

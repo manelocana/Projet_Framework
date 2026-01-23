@@ -8,9 +8,6 @@ from app.forms.about import AboutForm
 pages_bp = Blueprint('pages', __name__)
 
 
-""" @pages_bp.route('/pages')
-def pages():
-    return render_template('pages.html') """
 
 
 @pages_bp.route('/pages')
