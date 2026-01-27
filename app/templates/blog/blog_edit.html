@@ -19,7 +19,7 @@
 
             <div class="form-group">
                 {{ form.content.label }}
-                {{ form.content(id="editor") }}
+                {{ form.content(class='ckeditor') }}
             </div>
 
             <div class="form-group">
@@ -40,7 +40,9 @@
     </div>
 </section>
 
-<script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+
+
+<!-- <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     let editorInstance;
@@ -54,5 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('#editor').value = editorInstance.getData();
     });
 });
-</script>
+</script> -->
+
 {% endblock %}
