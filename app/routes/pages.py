@@ -33,7 +33,7 @@ def edit_about():
     form = AboutForm(obj=about)
 
     if form.validate_on_submit():
-        about.content = form.content.data
+        about.content = form.content.data   # --> html ckeditor
         db.session.commit()
         return redirect(url_for('pages.pages'))
     

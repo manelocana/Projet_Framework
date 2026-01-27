@@ -9,5 +9,8 @@ from wtforms.validators import DataRequired
 
 
 class AboutForm(FlaskForm):
-    content = TextAreaField('Biography', validators=[DataRequired()])
+    content = TextAreaField('Biography', 
+                            validators=[DataRequired()], 
+                            render_kw={'class':'ckeditor'})
+    
     save = SubmitField('Save changes')
