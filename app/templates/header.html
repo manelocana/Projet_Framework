@@ -25,6 +25,12 @@
             {% endif %}
         </div>
 
+        <div class="header-login">
+            {% if current_user.is_authenticated and current_user.role == 'admin' %}
+                <a href="{{ url_for('admin.admin_dashboard') }}">Panel Admin</a>
+            {% endif %}
+        </div>
+
 
         <div class="search">
             <a href="mailto:987frisk.agency@mail.com" class="btn">WORK WITH ME</a>
