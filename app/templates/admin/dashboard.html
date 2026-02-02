@@ -1,0 +1,15 @@
+
+
+
+{% extends "index.html" %}
+
+{% block content %}
+<section class="admin-dashboard">
+    <h1>Admin dashboard</h1>
+
+    <p>User: {{ current_user.username }}</p>
+    <p>Rol: {{ current_user.role }}</p>
+
+    <a href="{{ url_for('auth.logout') }}">Logout</a>
+</section>
+{% endblock %}
