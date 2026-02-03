@@ -8,6 +8,7 @@ from app.routes.contact import contact_bp
 
 from app.routes.auth import auth_bp
 from app.routes.admin_routes import admin_bp
+from app.routes.user_routes import user_bp
 
 from app.extensions import db, login_manager
 
@@ -39,5 +40,6 @@ def create_app():
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(admin_bp)
+    app.register_blueprint(user_bp)
 
     return app
