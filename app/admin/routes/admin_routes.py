@@ -10,7 +10,7 @@ from app.models.user import User
 
 
 
-admin_bp = Blueprint("admin", __name__)
+admin_bp = Blueprint("admin", __name__,)
 
 
 

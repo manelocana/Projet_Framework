@@ -1,14 +1,15 @@
 
 from flask import Flask
-from app.routes.home import home_bp
-from app.routes.pages import pages_bp
-from app.routes.portfolio import portfolio_bp
-from app.routes.blog import blog_bp
-from app.routes.contact import contact_bp
 
-from app.routes.auth import auth_bp
-from app.routes.admin_routes import admin_bp
-from app.routes.user_routes import user_bp
+from app.public.routes.home import home_bp
+from app.public.routes.pages import pages_bp
+from app.public.routes.portfolio import portfolio_bp
+from app.public.routes.blog import blog_bp
+from app.public.routes.contact import contact_bp
+
+from app.admin.routes.auth import auth_bp
+from app.admin.routes.admin_routes import admin_bp
+from app.admin.routes.user_routes import user_bp
 
 from app.extensions import db, login_manager
 

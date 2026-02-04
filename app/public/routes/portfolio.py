@@ -20,7 +20,7 @@ def portfolio_static_project(page):
 @portfolio_bp.route('/portfolio')
 def portfolio():
     projects = Project.query.order_by(Project.id.desc()).all()
-    return render_template('portfolio/portfolio.html', projects=projects)
+    return render_template('public/portfolio/portfolio.html', projects=projects)
 
 
 @portfolio_bp.route('/portfolio/<int:project_id>')

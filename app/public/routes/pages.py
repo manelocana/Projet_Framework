@@ -5,7 +5,7 @@ from app.models.about import About
 from app.forms.about import AboutForm
 
 
-pages_bp = Blueprint('pages', __name__)
+pages_bp = Blueprint('pages', __name__, template_folder='../templates/public/pages')
 
 
 

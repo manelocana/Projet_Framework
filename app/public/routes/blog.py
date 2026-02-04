@@ -10,7 +10,7 @@ from app.forms.blog import BlogForm
 
 
 
-blog_bp = Blueprint('blog', __name__)
+blog_bp = Blueprint('blog', __name__, template_folder='../templates/public/blog')
 
 
 
@@ -19,7 +19,7 @@ blog_bp = Blueprint('blog', __name__)
 @blog_bp.route('/blog')
 def blog():
     posts = Post.query.order_by(Post.id.desc()).all()
-    return render_template('blog/blog.html', posts=posts)
+    return render_template('public/blog/blog.html', posts=posts)
 
 
 @blog_bp.route('/blog/<int:post_id>')

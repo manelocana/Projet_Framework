@@ -2,6 +2,24 @@
 
 
 
-venv/
+
+
+# Python cache
 **/__pycache__/
+__pycache__/
 *.pyc
+*.pyo
+
+# Flask
+instance/
+.env
+venv/
+.env/
+.pytest_cache
+.pytest*
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

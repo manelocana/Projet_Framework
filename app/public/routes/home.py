@@ -3,7 +3,7 @@ from app.models.portfolio import Project
 from app.models.post import Post
 
 
-home_bp = Blueprint('home', __name__)
+home_bp = Blueprint('home', __name__, template_folder='../templates')
 
 
 
@@ -18,4 +18,4 @@ def get_posts(limit=3):
 def home():
     projects = get_projects()
     posts = get_posts()
-    return render_template('home.html', projects=projects, posts=posts, title='Home')
+    return render_template('public/home.html', projects=projects, posts=posts, title='Home')
