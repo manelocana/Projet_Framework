@@ -11,6 +11,8 @@ from app.admin.routes.auth import auth_bp
 from app.admin.routes.admin_routes import admin_bp
 from app.admin.routes.user_routes import user_bp
 
+from app.admin.routes.blog_admin import blog_admin_bp
+
 from app.extensions import db, login_manager
 
 from config import Config
@@ -42,5 +44,7 @@ def create_app():
     app.register_blueprint(auth_bp)
     app.register_blueprint(admin_bp)
     app.register_blueprint(user_bp)
+
+    app.register_blueprint(blog_admin_bp)
 
     return app

@@ -10,13 +10,13 @@ from app.models.user import User
 
 
 
-admin_bp = Blueprint("admin", __name__, template_folder='../templates')
+admin_bp = Blueprint("admin", __name__, template_folder='../templates', url_prefix='/admin')
 
 
 
 
 
-@admin_bp.route("/admin")
+@admin_bp.route("/")
 @login_required
 @role_required(["admin"])
 def admin_dashboard():
@@ -25,7 +25,7 @@ def admin_dashboard():
 
 
 
-@admin_bp.route('/admin/users')
+@admin_bp.route('/users')
 @login_required
 @role_required(['admin'])
 def admin_users():

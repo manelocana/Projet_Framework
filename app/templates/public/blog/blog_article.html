@@ -23,9 +23,9 @@
 
         {% if current_user.is_authenticated %}
             <div class="blog-article-actions">
-                <a href="{{ url_for('blog.blog_edit', post_id=post.id) }}" class="btn">Edit article</a>
+                <a href="{{ url_for('blog_admin.blog_edit', post_id=post.id) }}" class="btn">Edit article</a>
 
-                <form method="POST" action="{{ url_for('blog.blog_delete', post_id=post.id) }}"
+                <form method="POST" action="{{ url_for('blog_admin.blog_delete', post_id=post.id) }}"
                       onsubmit="return confirm('Are you sure you want to delete this post?');">
                     <button class="btn btn-danger" type="submit">Delete article</button>
                 </form>
