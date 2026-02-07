@@ -7,14 +7,14 @@ from flask_login import login_required
 
 
 
-portfolio_bp = Blueprint('portfolio', __name__)
+portfolio_bp = Blueprint('portfolio', __name__, template_folder='../templates')
 
 
 
 
 @portfolio_bp.route('/portfolio/projects/<string:page>')
 def portfolio_static_project(page):
-    return render_template(f'portfolio/projects/{page}.html')
+    return render_template(f'public/portfolio/{page}.html')
 
 
 @portfolio_bp.route('/portfolio')
@@ -26,7 +26,7 @@ def portfolio():
 @portfolio_bp.route('/portfolio/<int:project_id>')
 def portfolio_project(project_id):
     project = Project.query.get_or_404(project_id)
-    return render_template('portfolio/projects/portfolio_project.html', project=project)
+    return render_template('public/portfolio/portfolio_project.html', project=project)
 
 
 @portfolio_bp.route('/portfolio/new', methods=['GET', 'POST'])
@@ -48,7 +48,7 @@ def portfolio_new():
         db.session.add(new_project)
         db.session.commit()
         return redirect(url_for('portfolio.portfolio'))
-    return render_template('portfolio/portfolio_new.html')
+    return render_template('admin/portfolio/portfolio_new.html')
 
 
 @portfolio_bp.route('/portfolio/<int:project_id>/edit', methods=['GET', 'POST'])
@@ -70,7 +70,7 @@ def portfolio_edit(project_id):
 
         db.session.commit()
         return redirect(url_for('portfolio.portfolio', project_id=project.id))
-    return render_template('portfolio/portfolio_edit.html', project=project) 
+    return render_template('admin/portfolio/portfolio_edit.html', project=project) 
 
 
 @portfolio_bp.route('/portfolio/<int:project_id>/delete', methods=['POST'])

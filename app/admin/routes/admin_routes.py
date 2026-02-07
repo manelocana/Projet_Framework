@@ -10,7 +10,7 @@ from app.models.user import User
 
 
 
-admin_bp = Blueprint("admin", __name__,)
+admin_bp = Blueprint("admin", __name__, template_folder='../templates')
 
 
 
@@ -20,7 +20,7 @@ admin_bp = Blueprint("admin", __name__,)
 @login_required
 @role_required(["admin"])
 def admin_dashboard():
-    return render_template("admin/dashboard.html")
+    return render_template("admin/administration/dashboard.html")
 
 
 
@@ -30,4 +30,4 @@ def admin_dashboard():
 @role_required(['admin'])
 def admin_users():
     users = User.query.order_by(User.id.asc()).all()
-    return render_template('admin/users.html', users=users)
+    return render_template('admin/administration/users.html', users=users)

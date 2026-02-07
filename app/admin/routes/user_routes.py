@@ -7,7 +7,7 @@ from app.decorators import role_required
 
 
 
-user_bp = Blueprint("user", __name__, url_prefix="/user")
+user_bp = Blueprint("user", __name__, template_folder='../templates', url_prefix="/user")
 
 
 # Route de profil personnel
@@ -15,4 +15,4 @@ user_bp = Blueprint("user", __name__, url_prefix="/user")
 @login_required
 @role_required(["user", "admin"])
 def profile():
-    return render_template("user/profile.html", user=current_user)
+    return render_template("admin/user/profile.html", user=current_user)

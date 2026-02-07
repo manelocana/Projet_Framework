@@ -10,7 +10,7 @@ from app.forms.blog import BlogForm
 
 
 
-blog_bp = Blueprint('blog', __name__, template_folder='../templates/public/blog')
+blog_bp = Blueprint('blog', __name__, template_folder='../templates')
 
 
 
@@ -25,7 +25,7 @@ def blog():
 @blog_bp.route('/blog/<int:post_id>')
 def blog_article(post_id):
     post = Post.query.get_or_404(post_id)
-    return render_template('blog/blog_article.html', post=post)
+    return render_template('public/blog/blog_article.html', post=post)
 
 
 @blog_bp.route('/blog/new', methods=['GET', 'POST'])
@@ -47,7 +47,7 @@ def blog_new():
         db.session.add(new_post)
         db.session.commit()
         return redirect(url_for('blog.blog'))
-    return render_template('blog/blog_new.html')
+    return render_template('admin/blog/blog_new.html')
 
 
 @blog_bp.route('/blog/<int:post_id>/edit', methods=['GET', 'POST'])
@@ -78,7 +78,7 @@ def blog_edit(post_id):
 
         db.session.commit()
         return redirect(url_for('blog.blog_article', post_id=post.id))
-    return render_template('blog/blog_edit.html', post=post, form=form)
+    return render_template('admin/blog/blog_edit.html', post=post, form=form)
 
 
 @blog_bp.route('/blog/<int:post_id>/delete', methods=['POST'])

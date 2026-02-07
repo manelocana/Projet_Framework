@@ -10,7 +10,7 @@ from urllib.parse import urlparse, urljoin
 
 
 
-auth_bp = Blueprint('auth', __name__)
+auth_bp = Blueprint('auth', __name__, template_folder='../templates')
 
 
 @login_manager.user_loader
@@ -44,7 +44,7 @@ def login():
 
         flash('Pass or name not correct', 'error')
 
-    return render_template('auth/login.html')
+    return render_template('admin/auth/login.html')
 
 
 
