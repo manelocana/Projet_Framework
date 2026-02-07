@@ -13,12 +13,12 @@ pages_bp = Blueprint('pages', __name__, template_folder='../templates/public/pag
 @pages_bp.route('/pages')
 def pages():
     about = About.query.first()
-    return render_template('pages.html', about=about)
+    return render_template('public/pages/pages.html', about=about)
 
 
 @pages_bp.route('/pages/projet_branding')
 def branding():
-    return render_template('pages/projet_branding.html')
+    return render_template('public/pages/projet_branding.html')
 
 
 @pages_bp.route('/about/edit', methods=['GET', 'POST'])
@@ -37,4 +37,4 @@ def edit_about():
         db.session.commit()
         return redirect(url_for('pages.pages'))
     
-    return render_template('pages/about_edit.html', form=form)
+    return render_template('admin/pages/about_edit.html', form=form)
