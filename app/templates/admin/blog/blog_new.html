@@ -15,12 +15,14 @@
 
         <form method="POST" action="{{ url_for('blog_admin.blog_new') }}" enctype="multipart/form-data">
 
+            {{ form.hidden_tag() }}
+
             <label for="title">Title</label>
-            <input type="text" id="title" name="title" placeholder="Title">
+            {{ form.title }}
 
             <label for="content">Content</label>
-            <textarea id="content" class="ckeditor" name="content" placeholder="Content" rows="6"></textarea>
-
+            {{ form.content }}
+            
             <label for="image">Select image</label>
             <input type="file" id="image" name="image">
 

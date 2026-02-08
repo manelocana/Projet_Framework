@@ -18,20 +18,21 @@ blog_admin_bp = Blueprint('blog_admin', __name__, template_folder='../templates'
 @blog_admin_bp.route('/blog/new', methods=['GET', 'POST'])
 @login_required
 def blog_new():
-    if request.method == 'POST':
-        title = request.form['title']
-        content = request.form.get('content')
+    form = BlogForm()
 
+    if form.validate_on_submit():
         image_file = request.files.get('image')
-        image_filename = save_blog_image(image_file)
+        image_filename = save_blog_image(image_file, 'blog')
         
-        new_post = Post(title=title, content=content, image=image_filename)
+        new_post = Post(title=form.title.data,
+                        content=form.content.data, 
+                        image=image_filename)
 
         db.session.add(new_post)
         db.session.commit()
 
         return redirect(url_for('blog.blog'))
-    return render_template('admin/blog/blog_new.html')
+    return render_template('admin/blog/blog_new.html', form=form)
 
 
 
@@ -49,13 +50,13 @@ def blog_edit(post_id):
         # voir si on monte le img
         image_file = request.files.get('image')
         if image_file and image_file.filename:
-            delete_blog_image(post.image)
-            post.image = save_blog_image(image_file)
+            delete_blog_image(post.image, 'blog')
+            post.image = save_blog_image(image_file, 'blog')
 
         db.session.commit()
 
         return redirect(url_for('blog.blog_article', post_id=post.id))
-    return render_template('admin/blog/blog_edit.html', post=post, form=form)
+    return render_template('admin/blog/blog_edit.html', form=form)
 
 
 
@@ -65,7 +66,7 @@ def blog_edit(post_id):
 def blog_delete(post_id):
     post = Post.query.get_or_404(post_id)
 
-    delete_blog_image(post.image)
+    delete_blog_image(post.image, 'blog')
 
     db.session.delete(post)
     db.session.commit()
