@@ -10,8 +10,10 @@ from app.public.routes.contact import contact_bp
 from app.admin.routes.auth import auth_bp
 from app.admin.routes.admin_routes import admin_bp
 from app.admin.routes.user_routes import user_bp
+from app.admin.routes.auth_register import auth_register_bp
 
 from app.admin.routes.blog_admin import blog_admin_bp
+from app.admin.routes.portfolio_admin import portfolio_admin_bp
 
 from app.extensions import db, login_manager
 
@@ -46,5 +48,8 @@ def create_app():
     app.register_blueprint(user_bp)
 
     app.register_blueprint(blog_admin_bp)
+    app.register_blueprint(portfolio_admin_bp)
+    app.register_blueprint(auth_register_bp)
+
 
     return app

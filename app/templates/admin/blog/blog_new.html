@@ -26,8 +26,10 @@
             <label for="image">Select image</label>
             <input type="file" id="image" name="image">
 
-            <button type="submit" class="btn">Create Post</button>
-            <a href="{{ url_for('blog.blog') }}" class="btn btn-danger">Back</a>
+            <!-- <button type="submit" class="btn">Create Post</button>
+            <a href="{{ url_for('blog.blog') }}" class="btn btn-danger">Back</a> -->
+
+            {{ form.submit(class="btn") }}
 
         </form>
 

@@ -21,9 +21,9 @@
 
     <section class="cards">
 
-        {% if current_user.is_authenticated %}
+        {% if current_user.is_authenticated and current_user.role == 'admin' %}
             <div class="add_new_project">
-                <a href="{{ url_for('portfolio.portfolio_new') }}" class="btn">Add new project</a>
+                <a href="{{ url_for('portfolio_admin.portfolio_new') }}" class="btn">Add new project</a>
             </div>
         {% endif %}
 
@@ -45,13 +45,13 @@
                     </a>
                     <br>
                     
-                    {% if current_user.is_authenticated %}
+                    {% if current_user.is_authenticated and current_user.role == 'admin' %}
                         <div class="form-actions a">
-                            <a href="{{ url_for('portfolio.portfolio_edit', project_id=project.id) }}" class="btn">
+                            <a href="{{ url_for('portfolio_admin.portfolio_edit', project_id=project.id) }}" class="btn">
                                 Edit project
                             </a>
                             
-                            <form action="{{ url_for('portfolio.portfolio_delete', project_id=project.id) }}"
+                            <form action="{{ url_for('portfolio_admin.portfolio_delete', project_id=project.id) }}"
                                 method="POST"
                                 style="display:inline;"
                                 onsubmit="return confirm('Delete project?');">

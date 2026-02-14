@@ -1,7 +1,6 @@
 
 
 
-
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired
@@ -9,7 +8,7 @@ from wtforms.validators import DataRequired
 
 
 
-class BlogForm(FlaskForm):
+class PortfolioForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
-    content = TextAreaField('Content', validators=[DataRequired()])
-    submit = SubmitField('Save Changes')
+    description = TextAreaField('Description / Link', validators=[DataRequired()])
+    submit = SubmitField('Add project')

@@ -7,7 +7,7 @@ from app.extensions import db
 from flask_login import login_required
 from app.forms.blog import BlogForm
 
-from utils.image_utils import save_blog_image, delete_blog_image
+from app.utils.image_utils import save_image, delete_image
 
 
 
@@ -22,7 +22,7 @@ def blog_new():
 
     if form.validate_on_submit():
         image_file = request.files.get('image')
-        image_filename = save_blog_image(image_file, 'blog')
+        image_filename = save_image(image_file, 'blog')
         
         new_post = Post(title=form.title.data,
                         content=form.content.data, 
@@ -50,8 +50,8 @@ def blog_edit(post_id):
         # voir si on monte le img
         image_file = request.files.get('image')
         if image_file and image_file.filename:
-            delete_blog_image(post.image, 'blog')
-            post.image = save_blog_image(image_file, 'blog')
+            delete_image(post.image, 'blog')
+            post.image = save_image(image_file, 'blog')
 
         db.session.commit()
 
@@ -66,7 +66,7 @@ def blog_edit(post_id):
 def blog_delete(post_id):
     post = Post.query.get_or_404(post_id)
 
-    delete_blog_image(post.image, 'blog')
+    delete_image(post.image, 'blog')
 
     db.session.delete(post)
     db.session.commit()

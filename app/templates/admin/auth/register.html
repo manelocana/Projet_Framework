@@ -1,26 +1,23 @@
 
 
-
-
 {% extends "partials/index.html" %}
 
 
 {% block content %}
 
 <section class="login-section">
-    <div class="login-card"> 
+    <div class="login-card">
 
-        <h2 class="text-center">Login</h2>
+        <h2 class="text-center">Sign in</h2>
 
         <form method="POST" class="login-form flex-column">
-            <input type="text" name="username" class="input" placeholder="Username" required>
+            <input type="text" name="username" placeholder="Username" required class="input">
+            <input type="password" name="password" placeholder="Password" required class="input">
 
-            <input type="password" name="password" class="input" placeholder="Password" required>
-
-            <button type="submit" class="btn w-100">Login</button>
+            <button type="submit" class="btn w-100">sign in</button>
         </form>
-
-        <a href="{{ url_for('auth_register.register') }}" class="btn w-100">sign in</a>
+        
+        <a href="{{ url_for('auth.login') }}">U are one acount? login</a>
 
 
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -32,8 +29,8 @@
                 </ul>
             {% endif %}
         {% endwith %}
-
         
+
     </div>
 </section>
 

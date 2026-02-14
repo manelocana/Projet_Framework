@@ -9,7 +9,7 @@ from flask import current_app
 
 
 
-def save_blog_image(image_file, folder):
+def save_image(image_file, folder):
     if not image_file or not image_file.filename:
         return None
 
@@ -28,7 +28,7 @@ def save_blog_image(image_file, folder):
 
 
 
-def delete_blog_image(filename, folder):
+def delete_image(filename, folder):
     if not filename:
         return
 
