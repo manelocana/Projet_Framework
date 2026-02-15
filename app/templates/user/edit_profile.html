@@ -1,0 +1,39 @@
+
+
+
+{% extends "partials/index.html" %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
+{% endblock %}
+
+
+
+{% block content %}
+
+<section class="container text-center blog-form-page">
+
+    <div class="blog-form-card">
+        <h2>Edit Profile</h2>
+
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                {{ form.username(class="form-control") }}
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary") }}
+                <a href="{{ url_for('user.profile') }}" class="btn">Cancel</a>
+            </div>
+
+        </form>
+    </div>    
+</section>
+
+{% endblock %}
