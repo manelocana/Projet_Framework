@@ -29,3 +29,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+
+
+
+
+
+/* flash close in 3 seconds */
+setTimeout(function() {
+    const flashes = document.querySelector('.flash-messages');
+    if (flashes) {
+        flashes.style.display = 'none';
+    }
+}, 3000);

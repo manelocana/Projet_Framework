@@ -122,6 +122,42 @@ button.btn {
 
 
 
+.flash-messages {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+}
+
+
+
+.alert {
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+}
+
+.alert-success {
+    background-color: #28a745;
+}
+
+.alert-danger {
+    background-color: #dc3545;
+}
+
+.alert-warning {
+    background-color: #ffc107;
+    color: black;
+}
+
+
+
+
+
+
 
 
 .login-section {

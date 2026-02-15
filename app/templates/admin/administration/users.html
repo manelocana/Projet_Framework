@@ -1,6 +1,5 @@
 
 
-
 {% extends "partials/index.html" %}
 
 {% block extra_css %}
@@ -19,16 +18,35 @@
                     <th>ID</th>
                     <th>Username</th>
                     <th>Role</th>
+                    <th>Actions</th> 
                 </tr>
             </thead>
             <tbody>
+
                 {% for user in users %}
                 <tr>
                     <td>{{ user.id }}</td>
                     <td>{{ user.username }}</td>
                     <td>{{ user.role }}</td>
+                    <td>
+
+
+                        {% if current_user.role == 'admin' %}
+                        <form action="{{ url_for('admin.delete_user', user_id=user.id) }}" 
+                              method="POST"
+                              style="display:inline;"
+                              onsubmit="return confirm('Delete this user?');">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                        {% endif %}
+
+                    
+                        
+
+                    </td>
                 </tr>
                 {% endfor %}
+
             </tbody>
         </table>
 
