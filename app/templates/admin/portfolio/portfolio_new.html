@@ -14,42 +14,45 @@
     <div class="form-card">
         <h2>Add New Project</h2>
 
-        <form method="POST" enctype="multipart/form-data" class="form">
+        <form method="POST"
+            action="{{ url_for('portfolio_admin.portfolio_new') }}" 
+            enctype="multipart/form-data" 
+            class="form"
+            novalidate>
+
             {{ form.hidden_tag() }}
 
             <div class="form-group">
-                <label>Title</label>
-                {{ form.title(class="") }}
+                {{ form.title.label }}
+                {{ form.title(class="form-control") }}
+                {% for error in form.title.errors %}
+                    <small class="form-error">{{ error }}</small>
+                {% endfor %}
             </div>
 
+            <!-- description -->
             <div class="form-group">
-                <label>Description / Link</label>
-                <!-- {{ form.description(class="ckeditor") }} -->
-
-                <textarea name="description" rows="6" required></textarea>
-
+                {{ form.description.label }}
+                {{ form.description(class="ckeditor form-control", rows="6")}}
+                {% for error in form.description.errors %}
+                    <small class="form-error">{{ error }}</small>
+                {% endfor %}
             </div>
 
+            <!-- image -->
             <div class="form-group">
-                <label>Select image</label>
-                <input type="file" name="image">
+                {{ form.image.label }}
+                {{ form.image(class="form-control") }}
             </div>
 
+            <!-- actions -->
             <div class="form-actions">
-                <button type="submit" class="btn">Add Project</button>
-                <a href="{{ url_for('portfolio.portfolio') }}" class="btn btn-secondary">Back</a>
+                {{ form.submit(class="btn") }}
+                <a href="{{ url_for('portfolio_admin.portfolio_admin_list') }}" class="btn">Back</a>
             </div>
         </form>
     </div>
 </section>
 
-<!-- <script>
-    // CKEditor: sincronizar antes de enviar
-    document.querySelector('form').addEventListener('submit', function() {
-        for (let instance in CKEDITOR.instances) {
-            CKEDITOR.instances[instance].updateElement();
-        }
-    });
-</script> -->
 
 {% endblock %}

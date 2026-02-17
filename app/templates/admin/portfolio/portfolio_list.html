@@ -1,0 +1,86 @@
+
+
+
+{% extends "partials/index.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="admin-section">
+    <div class="container">
+
+        <div class="admin-header">
+            <h1>Portfolio Management</h1>
+            <a href="{{ url_for('portfolio_admin.portfolio_new') }}" class="btn">
+                + Add New Project
+            </a>
+        </div>
+
+        {% if projects %}
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for project in projects %}
+                <tr>
+                    <td>{{ project.id }}</td>
+
+                    <td>
+                        {% if project.image %}
+                            <img src="{{ url_for('static', filename='uploads/portfolio/' ~ project.image) }}"
+                                 class="admin-thumb">
+                        {% else %}
+                            No image
+                        {% endif %}
+                    </td>
+
+                    <td>{{ project.title[:20] }}</td>
+                    <!-- striptags(<p><strong> etc..) and truncate(corte limpio) == texto plano -->
+                    <td>{{ project.description | striptags | truncate(40) }}...</td>
+
+                    <td class="actions">
+
+                        <a href="{{ url_for('portfolio_admin.portfolio_edit', project_id=project.id) }}"
+                           class="btn">
+                            Edit
+                        </a>
+
+                        <form action="{{ url_for('portfolio_admin.portfolio_delete', project_id=project.id) }}"
+                              method="POST"
+                              style="display:inline;"
+                              onsubmit="return confirm('Delete this project?');">
+
+                            <button class="btn btn-danger">
+                                Delete
+                            </button>
+                        </form>
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+            <p>No projects yet.</p>
+        {% endif %}
+
+        <div class="admin-footer">
+            <a href="{{ url_for('admin.admin_dashboard') }}" class="btn">
+                Back to Dashboard
+            </a>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

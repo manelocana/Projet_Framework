@@ -1,6 +1,6 @@
 
 
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from app.models.portfolio import Project
 from app.extensions import db
 from werkzeug.utils import secure_filename
@@ -12,10 +12,19 @@ from app.decorators import role_required
 
 
 
+
 portfolio_admin_bp = Blueprint('portfolio_admin', __name__, template_folder='../templates', url_prefix='/admin')
 
 
 
+
+
+@portfolio_admin_bp.route('/portfolio')
+@login_required
+@role_required(["admin"])
+def portfolio_admin_list():
+    projects = Project.query.order_by(Project.id.desc()).all()
+    return render_template('admin/portfolio/portfolio_list.html', projects=projects)
 
 
 
@@ -24,6 +33,17 @@ portfolio_admin_bp = Blueprint('portfolio_admin', __name__, template_folder='../
 @role_required(["admin"])
 def portfolio_new():
     form = PortfolioForm()
+
+
+    print("METHOD:", request.method)
+
+    if request.method == "POST":
+        print("FORM DATA:", request.form)
+        print("FILES:", request.files)
+        print("VALID:", form.validate())
+        print("ERRORS:", form.errors)
+
+        
 
     if form.validate_on_submit():
         image_file = request.files.get('image')
@@ -37,8 +57,13 @@ def portfolio_new():
 
         db.session.add(new_project)
         db.session.commit()
+                
+        flash("Project added successfully!", "success")
 
-        return redirect(url_for('portfolio.portfolio'))
+        return redirect(url_for('portfolio_admin.portfolio_admin_list'))
+    
+    if form.errors:
+        print(form.errors)
 
     return render_template('admin/portfolio/portfolio_new.html', form=form)
 
@@ -49,9 +74,11 @@ def portfolio_new():
 @role_required(["admin"])
 def portfolio_edit(project_id):
     project = Project.query.get_or_404(project_id)
+    """ para que edit tenga los valores ya puestos """
     form = PortfolioForm(obj=project)
 
     if form.validate_on_submit():
+        """ actualizar datos """
         project.title = form.title.data
         project.description = form.description.data
 
@@ -61,9 +88,9 @@ def portfolio_edit(project_id):
             project.image = save_image(image_file, 'portfolio')
 
         db.session.commit()
-        return redirect(url_for('portfolio_admin.portfolio_edit'))
+        return redirect(url_for('portfolio_admin.portfolio_admin_list'))
 
-    return render_template('admin/portfolio/portfolio_edit.html', form=form)
+    return render_template('admin/portfolio/portfolio_edit.html', form=form, project=project)
 
 
 
@@ -77,4 +104,4 @@ def portfolio_delete(project_id):
 
     db.session.delete(project)
     db.session.commit()
-    return redirect(url_for('portfolio.portfolio'))
+    return redirect(url_for('portfolio_admin.portfolio_admin_list'))
