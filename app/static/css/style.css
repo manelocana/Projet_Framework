@@ -131,8 +131,6 @@ button.btn
     margin-bottom: 10px;
 }
 
-
-
 .alert {
     padding: 12px 20px;
     margin-bottom: 10px;
@@ -146,11 +144,11 @@ button.btn
 }
 
 .alert-danger {
-    background-color: #dc3545;
+    background-color: #e70822ef;
 }
 
 .alert-warning {
-    background-color: #ffc107;
+    background-color: #ffe20b;
     color: black;
 }
 

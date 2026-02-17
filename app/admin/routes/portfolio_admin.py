@@ -34,17 +34,6 @@ def portfolio_admin_list():
 def portfolio_new():
     form = PortfolioForm()
 
-
-    print("METHOD:", request.method)
-
-    if request.method == "POST":
-        print("FORM DATA:", request.form)
-        print("FILES:", request.files)
-        print("VALID:", form.validate())
-        print("ERRORS:", form.errors)
-
-        
-
     if form.validate_on_submit():
         image_file = request.files.get('image')
         image_filename = save_image(image_file, 'portfolio')
@@ -88,6 +77,9 @@ def portfolio_edit(project_id):
             project.image = save_image(image_file, 'portfolio')
 
         db.session.commit()
+
+        flash("Project added successfully!", "success")
+
         return redirect(url_for('portfolio_admin.portfolio_admin_list'))
 
     return render_template('admin/portfolio/portfolio_edit.html', form=form, project=project)
@@ -104,4 +96,7 @@ def portfolio_delete(project_id):
 
     db.session.delete(project)
     db.session.commit()
+
+    flash("Project delete successfully!", "danger")
+
     return redirect(url_for('portfolio_admin.portfolio_admin_list'))
