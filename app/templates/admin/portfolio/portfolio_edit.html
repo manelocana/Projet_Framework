@@ -50,6 +50,11 @@
                     <span>Current image</span>
                     <img src="{{ url_for('static', filename='uploads/portfolio/' ~ project.image) }}"
                          alt="Current image">
+
+                    {% for error in form.image.errors %}
+                    <small class="form-error">{{ error }}</small>
+                    {% endfor %}
+                    
                 </div>
                 {% endif %}
             </div>

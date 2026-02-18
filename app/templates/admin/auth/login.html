@@ -1,9 +1,7 @@
 
 
 
-
 {% extends "partials/index.html" %}
-
 
 {% block content %}
 
@@ -13,15 +11,26 @@
         <h2 class="text-center">Login</h2>
 
         <form method="POST" class="login-form flex-column">
-            <input type="text" name="username" class="input" placeholder="Username" required>
 
-            <input type="password" name="password" class="input" placeholder="Password" required>
+            {{ form.hidden_tag() }}
 
-            <button type="submit" class="btn w-100">Login</button>
+            {{ form.username(class="input", placeholder="Username") }}
+            {% for error in form.username.errors %}
+                <small class="form-error">{{ error }}</small>
+            {% endfor %}
+
+            {{ form.password(class="input", placeholder="Password") }}
+            {% for error in form.password.errors %}
+                <small class="form-error">{{ error }}</small>
+            {% endfor %}
+
+            {{ form.submit(class="btn w-100") }}
+
         </form>
 
-        <a href="{{ url_for('auth_register.register') }}" class="btn w-100">sign in</a>
-
+        <a href="{{ url_for('auth_register.register') }}" class="btn w-100">
+            Sign in
+        </a>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -32,10 +41,8 @@
                 </ul>
             {% endif %}
         {% endwith %}
-
         
     </div>
 </section>
-
 
 {% endblock %}

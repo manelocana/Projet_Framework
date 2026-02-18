@@ -20,6 +20,10 @@
                 <div class="form-group">
                     {{ form.content.label }}
                     {{ form.content }}
+
+                    {% for error in form.content.errors %}
+                    <small class="form-error">{{ error }}</small>
+                    {% endfor %}
                 </div>
 
                 <div class="form-actions flex-center">

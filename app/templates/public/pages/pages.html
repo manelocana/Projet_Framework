@@ -31,9 +31,13 @@
                     <p>About empty</p>
                 {% endif %}
 
-                {% if current_user.is_authenticated %}
+                {% if current_user.is_authenticated and current_user.role == 'admin' %}
                     <a href="{{ url_for('pages.edit_about') }}" class="btn">
-                        {% if about and about.content %} Edit About {% else %} Add About {% endif %}
+                        {% if about and about.content %} 
+                            Edit About 
+                        {% else %} 
+                            Add About 
+                        {% endif %}
                     </a>
                 {% endif %}
 

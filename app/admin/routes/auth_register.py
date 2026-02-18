@@ -7,6 +7,8 @@ from app.extensions import db
 from app.models.user import User
 from flask_login import current_user
 
+from app.forms.auth import RegisterForm
+
 
 
 auth_register_bp = Blueprint('auth_register', __name__)
@@ -16,12 +18,14 @@ auth_register_bp = Blueprint('auth_register', __name__)
 @auth_register_bp.route('/register', methods=['GET', 'POST'])
 def register():
 
+    form = RegisterForm()
+
     if current_user.is_authenticated:
         return redirect(url_for('home.home'))
 
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+    if form.validate_on_submit():
+        username = form.username.data
+        password = form.password.data
 
         if not username or not password:
             flash("All field required", "error")
@@ -45,4 +49,4 @@ def register():
         flash("user created ok, u can login.", "success")
         return redirect(url_for('auth.login'))
 
-    return render_template('admin/auth/register.html')
+    return render_template('admin/auth/register.html', form=form)

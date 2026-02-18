@@ -11,10 +11,26 @@
         <h2 class="text-center">Sign in</h2>
 
         <form method="POST" class="login-form flex-column">
-            <input type="text" name="username" placeholder="Username" required class="input">
-            <input type="password" name="password" placeholder="Password" required class="input">
 
-            <button type="submit" class="btn w-100">sign in</button>
+            {{ form.hidden_tag() }}
+
+            {{ form.username(class="input", placeholder="Username") }}
+            {% for error in form.username.errors %}
+                <small class="form-error">{{ error }}</small>
+            {% endfor %}
+
+            {{ form.password(class="input", placeholder="Password") }}
+            {% for error in form.password.errors %}
+                <small class="form-error">{{ error }}</small>
+            {% endfor %}
+
+            {{ form.confirm_password(class="input", placeholder="Confirm Password") }}
+            {% for error in form.confirm_password.errors %}
+                <small class="form-error">{{ error }}</small>
+            {% endfor %}
+
+            {{ form.submit(class="btn w-100") }}
+
         </form>
         
         <a href="{{ url_for('auth.login') }}">U are one acount? login</a>

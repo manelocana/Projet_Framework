@@ -5,12 +5,14 @@ from app.models.user import User
 from werkzeug.security import check_password_hash
 from app.extensions import login_manager
 
-
 from urllib.parse import urlparse, urljoin
+from app.forms.auth import LoginForm
 
 
 
 auth_bp = Blueprint('auth', __name__, template_folder='../templates')
+
+
 
 
 @login_manager.user_loader
@@ -28,9 +30,12 @@ def is_safe_url(target):
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+    form = LoginForm()
+
+    if form.validate_on_submit():
+        username = form.username.data
+        password = form.password.data
+
         user = User.query.filter_by(username=username).first()
 
         if user and check_password_hash(user.password, password):
@@ -44,7 +49,7 @@ def login():
 
         flash('Pass or name not correct', 'error')
 
-    return render_template('admin/auth/login.html')
+    return render_template('admin/auth/login.html', form=form)
 
 
 

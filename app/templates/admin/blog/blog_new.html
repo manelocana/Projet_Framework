@@ -26,6 +26,7 @@
             <div class="form-group">
                 {{ form.title.label }}
                 {{ form.title(class="form-control") }}
+
                 {% for error in form.title.errors %}
                     <small class="form-error">{{ error }}</small>
                 {% endfor %}
@@ -35,6 +36,7 @@
             <div class="form-group">
                 {{ form.description.label }}
                 {{ form.description(class="ckeditor form-control", rows="6") }}
+
                 {% for error in form.description.errors %}
                     <small class="form-error">{{ error }}</small>
                 {% endfor %}
@@ -44,6 +46,7 @@
             <div class="form-group">
                 {{ form.image.label }}
                 {{ form.image(class="form-control") }}
+                
                 {% for error in form.image.errors %}
                     <small class="form-error">{{ error }}</small>
                 {% endfor %}
