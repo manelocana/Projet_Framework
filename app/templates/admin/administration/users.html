@@ -36,12 +36,11 @@
                               method="POST"
                               style="display:inline;"
                               onsubmit="return confirm('Delete this user?');">
-                            <button class="btn btn-danger">Delete</button>
+                            
+                              {{ delete_form.hidden_tag() }}
+                              {{ delete_form.submit(class="btn btn-danger") }}                        
                         </form>
                         {% endif %}
-
-                    
-                        
 
                     </td>
                 </tr>

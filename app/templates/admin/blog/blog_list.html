@@ -1,0 +1,96 @@
+
+
+
+
+
+{% extends "partials/index.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="admin-section">
+    <div class="container">
+
+        <div class="admin-header">
+            <h1>Blog Management</h1>
+            <a href="{{ url_for('blog_admin.blog_new') }}" class="btn">
+                + Add New Project
+            </a>
+        </div>
+
+        
+        <div class="admin-footer">
+            <a href="{{ url_for('admin.admin_dashboard') }}" class="btn">
+                Back to Dashboard
+            </a>
+        </div>
+
+
+        {% if posts %}
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for post in posts %}
+                <tr>
+                    <td>{{ post.id }}</td>
+
+                    <td>
+                        {% if post.image %}
+                            <img src="{{ url_for('static', filename='uploads/blog/' ~ post.image) }}"
+                                 class="admin-thumb">
+                        {% else %}
+                            No image
+                        {% endif %}
+                    </td>
+
+                    <td>{{ post.title[:20] }}</td>
+                    <!-- striptags(<p><strong> etc..) and truncate(corte limpio) == texto plano -->
+                    <td>{{ post.description | striptags | truncate(40) }}...</td>
+
+                    <td class="actions">
+
+                        <a href="{{ url_for('blog_admin.blog_edit', post_id=post.id) }}"
+                           class="btn">
+                            Edit
+                        </a>
+
+                        <form action="{{ url_for('blog_admin.blog_delete', post_id=post.id) }}"
+                              method="POST"
+                              style="display:inline;"
+                              onsubmit="return confirm('Delete this project?');">
+
+                            <button class="btn btn-danger">
+                                Delete
+                            </button>
+                        </form>
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+            <p>No posts yet.</p>
+        {% endif %}
+
+        <div class="admin-footer">
+            <a href="{{ url_for('admin.admin_dashboard') }}" class="btn">
+                Back to Dashboard
+            </a>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

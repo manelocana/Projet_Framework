@@ -1,5 +1,6 @@
 
 
+
 {% extends 'partials/index.html' %}
 
 {% block extra_css %}
@@ -13,23 +14,48 @@
 
         <h2>Create New Post</h2>
 
-        <form method="POST" action="{{ url_for('blog_admin.blog_new') }}" enctype="multipart/form-data">
+        <form method="POST"
+              action="{{ url_for('blog_admin.blog_new') }}"
+              enctype="multipart/form-data"
+              class="form"
+              novalidate>
 
             {{ form.hidden_tag() }}
 
-            <label for="title">Title</label>
-            {{ form.title }}
 
-            <label for="content">Content</label>
-            {{ form.content }}
-            
-            <label for="image">Select image</label>
-            <input type="file" id="image" name="image">
+            <div class="form-group">
+                {{ form.title.label }}
+                {{ form.title(class="form-control") }}
+                {% for error in form.title.errors %}
+                    <small class="form-error">{{ error }}</small>
+                {% endfor %}
+            </div>
 
-            <!-- <button type="submit" class="btn">Create Post</button>
-            <a href="{{ url_for('blog.blog') }}" class="btn btn-danger">Back</a> -->
 
-            {{ form.submit(class="btn") }}
+            <div class="form-group">
+                {{ form.description.label }}
+                {{ form.description(class="ckeditor form-control", rows="6") }}
+                {% for error in form.description.errors %}
+                    <small class="form-error">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+
+            <div class="form-group">
+                {{ form.image.label }}
+                {{ form.image(class="form-control") }}
+                {% for error in form.image.errors %}
+                    <small class="form-error">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+
+            <div class="form-actions">
+                {{ form.submit(class="btn") }}
+                <a href="{{ url_for('blog_admin.blog_list') }}" class="btn btn-danger">
+                    Back
+                </a>
+            </div>
 
         </form>
 

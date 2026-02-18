@@ -24,11 +24,7 @@
     <div class="container">
         <div class="blog_container">
 
-            {% if current_user.is_authenticated %}
-            <div class="new_post flex-center">
-                <a href="{{ url_for('blog_admin.blog_new') }}" class="btn">+ New post</a>
-            </div>
-            {% endif %}
+            
 
             {% for post in posts %}
                 <div class="blog_card">
@@ -38,7 +34,7 @@
                     {% endif %}
 
                     <h3>{{ post.title }}</h3>
-                    <p>{{ post.content[:100] | safe }}...</p>
+                    <p>{{ post.description | default('') | striptags | truncate(100) }}...</p>
                     
                     <a href="{{ url_for('blog.blog_article', post_id=post.id) }}" class="btn">
                         View more

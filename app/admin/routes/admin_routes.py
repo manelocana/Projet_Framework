@@ -6,8 +6,9 @@ from flask_login import login_required, current_user
 from app.decorators import role_required
 
 from app.models.user import User
-
 from app.extensions import db
+from app.forms.admin import DeleteForm
+
 
 
 
@@ -32,7 +33,8 @@ def admin_dashboard():
 @role_required(['admin'])
 def admin_users():
     users = User.query.order_by(User.id.asc()).all()
-    return render_template('admin/administration/users.html', users=users)
+    delete_form = DeleteForm()
+    return render_template('admin/administration/users.html', users=users, delete_form=delete_form)
 
 
 
