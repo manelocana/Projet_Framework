@@ -1,7 +1,7 @@
 
 
 
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, redirect, url_for, flash
 from app.models.post import Post
 from app.extensions import db
 from flask_login import login_required
