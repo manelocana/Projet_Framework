@@ -10,28 +10,29 @@ from app.public.routes.contact import contact_bp
 from app.admin.routes.auth import auth_bp
 from app.admin.routes.admin_routes import admin_bp
 from app.admin.routes.auth_register import auth_register_bp
-
 from app.admin.routes.blog_admin import blog_admin_bp
 from app.admin.routes.portfolio_admin import portfolio_admin_bp
 
 from app.user.routes.user_routes import user_bp
 
-
 from app.extensions import db, login_manager
 
 from config import Config
-
 from flask_migrate import Migrate
+import pymysql
+
 
 
 migrate = Migrate()
 
+pymysql.install_as_MySQLdb()
 
 
-def create_app():
+
+def create_app(config_class=Config):
     app = Flask(__name__)
 
-    app.config.from_object(Config)
+    app.config.from_object(config_class)
 
     db.init_app(app)
     migrate.init_app(app, db)
