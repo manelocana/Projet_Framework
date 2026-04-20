@@ -15,6 +15,9 @@ def pages():
     return render_template('public/pages/pages.html', about=about)
 
 
+
+""" y a pas de variables , car cest un html estatic """
+
 @pages_bp.route('/pages/projet_branding')
 def branding():
     return render_template('public/pages/projet_branding.html')

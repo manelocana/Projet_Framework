@@ -10,6 +10,8 @@ from app.forms.blog import BlogForm
 from app.utils.image_utils import save_image, delete_image
 from app.decorators import role_required
 
+from flask_login import current_user
+
 
 
 blog_admin_bp = Blueprint('blog_admin', __name__, template_folder='../templates', url_prefix='/admin')
@@ -40,7 +42,8 @@ def blog_new():
         new_post = Post(
             title=form.title.data,
             description=form.description.data,
-            image=image_filename
+            image=image_filename,
+            author=current_user
         )
 
         db.session.add(new_post)
@@ -77,7 +80,7 @@ def blog_edit(post_id):
 
         db.session.commit()
 
-        flash("Post added successfully!", "success")
+        flash("Post edit ok successfully!", "success")
 
         return redirect(url_for('blog_admin.blog_list'))
 

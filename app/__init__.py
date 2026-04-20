@@ -1,5 +1,8 @@
 
+
 from flask import Flask
+from config import Config
+from app.extensions import db, login_manager, migrate
 
 from app.public.routes.home import home_bp
 from app.public.routes.pages import pages_bp
@@ -16,15 +19,15 @@ from app.admin.routes.pages_admin import pages_admin_bp
 
 from app.user.routes.user_routes import user_bp
 
-from app.extensions import db, login_manager
 
-from config import Config
-from flask_migrate import Migrate
 import pymysql
 
 
+from flask_wtf import CSRFProtect
+# from app.utils.logs_config import setup_logging
 
-migrate = Migrate()
+
+
 
 pymysql.install_as_MySQLdb()
 
@@ -33,14 +36,20 @@ pymysql.install_as_MySQLdb()
 def create_app(config_class=Config):
     app = Flask(__name__)
 
+    """ configuration depuis la class Config """
     app.config.from_object(config_class)
 
+    # CSRFProtect(app)
+
+    """ inicialiser la database et regarder si a des migrations """
     db.init_app(app)
     migrate.init_app(app, db)
     
+    """ inicialiser le login """
     login_manager.init_app(app)
     login_manager.login_view = 'auth.login'
 
+    """ registrer les blueprint qui contient les routes """
     app.register_blueprint(home_bp)
     app.register_blueprint(pages_bp)
     app.register_blueprint(portfolio_bp)

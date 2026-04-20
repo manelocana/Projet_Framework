@@ -9,7 +9,6 @@ portfolio_bp = Blueprint('portfolio', __name__, template_folder='../templates')
 
 
 
-
 @portfolio_bp.route('/portfolio/projects/<string:page>')
 def portfolio_static_project(page):
     return render_template(f'public/portfolio/{page}.html')

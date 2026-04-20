@@ -1,7 +1,6 @@
 
 
-
-from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask import Blueprint, render_template, redirect, url_for, flash
 from flask_login import login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.extensions import db
@@ -9,7 +8,7 @@ from app.forms.user import EditProfileForm, ChangePasswordForm
 
 
 
-
+""" url_prefix pour donner un nom standard a la url, 'user' """
 user_bp = Blueprint("user", __name__, template_folder="../../templates", url_prefix="/user")
 
 
@@ -22,21 +21,25 @@ def profile():
 
 
 
-
 @user_bp.route("/profile/edit", methods=["GET", "POST"])
 @login_required
 def edit_profile():
+
+    """ je utilise le formulaire de WTForms de flask """
     form = EditProfileForm(obj=current_user)
 
     if form.validate_on_submit():
+
+        """ validation simple del nom del user """
         current_user.username = form.username.data
         db.session.commit()
+
+        """ message flash, pour advertir de la accion """
         flash("Profile updated successfully", "success")
+
         return redirect(url_for("user.profile"))
 
     return render_template("user/edit_profile.html", form=form)
-
-
 
 
 

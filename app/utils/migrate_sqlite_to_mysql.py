@@ -15,11 +15,11 @@ with app.app_context():
     sqlite_conn.row_factory = sqlite3.Row
     sqlite_cursor = sqlite_conn.cursor()
 
-    print("🚀 Migrando datos...")
+    print("Migrando datos...")
 
-    # =========================
-    # USERS
-    # =========================
+
+    
+    """ USERS """
     sqlite_cursor.execute("SELECT * FROM user")
     users = sqlite_cursor.fetchall()
 
@@ -32,11 +32,11 @@ with app.app_context():
         )
         db.session.add(user)
 
-    print(f"✅ Users: {len(users)}")
+    print(f"Users: {len(users)}")
 
-    # =========================
-    # POSTS
-    # =========================
+
+    
+    """ POSTS """
     sqlite_cursor.execute("SELECT * FROM post")
     posts = sqlite_cursor.fetchall()
 
@@ -49,11 +49,11 @@ with app.app_context():
         )
         db.session.add(post)
 
-    print(f"✅ Posts: {len(posts)}")
+    print(f"Posts: {len(posts)}")
 
-    # =========================
-    # PORTFOLIO
-    # =========================
+    
+
+    """ PORTFOLIO """
     sqlite_cursor.execute("SELECT * FROM project")
     projects = sqlite_cursor.fetchall()
 
@@ -66,11 +66,11 @@ with app.app_context():
         )
         db.session.add(project)
 
-    print(f"✅ Portfolio: {len(projects)}")
+    print(f"Portfolio: {len(projects)}")
 
-    # =========================
-    # ABOUT
-    # =========================
+    
+
+    """ ABOUT """
     sqlite_cursor.execute("SELECT * FROM about")
     abouts = sqlite_cursor.fetchall()
 
@@ -81,9 +81,9 @@ with app.app_context():
         )
         db.session.add(about)
 
-    print(f"✅ About: {len(abouts)}")
+    print(f"About: {len(abouts)}")
 
     # Guardar en MySQL
     db.session.commit()
 
-    print("🎉 MIGRACIÓN COMPLETADA CON ÉXITO")
+    print("MIGRACIÓN COMPLETADA CON ÉXITO")

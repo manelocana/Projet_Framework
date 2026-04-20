@@ -1,6 +1,5 @@
 
 
-
 from flask import Blueprint, render_template, redirect, url_for, flash
 from flask_login import login_required, current_user
 from app.decorators import role_required
@@ -11,11 +10,7 @@ from app.forms.admin import DeleteForm
 
 
 
-
-
 admin_bp = Blueprint("admin", __name__, template_folder='../templates', url_prefix='/admin')
-
-
 
 
 
@@ -24,7 +19,6 @@ admin_bp = Blueprint("admin", __name__, template_folder='../templates', url_pref
 @role_required(["admin"])
 def admin_dashboard():
     return render_template("admin/administration/dashboard.html")
-
 
 
 
@@ -44,14 +38,15 @@ def admin_users():
 @role_required(["admin"])
 def delete_user(user_id):
 
+    """ validation pour voir si y a un user, sinon lance un error 404 """
     user = User.query.get_or_404(user_id)
 
-    # No permitir borrarse a sí mismo
+    """ pour pas ce supprimer a lui meme comment admin """
     if user.id == current_user.id:
         flash("You cannot delete yourself.", "danger")
         return redirect(url_for("admin.admin_users"))
 
-    # Contar admins
+    """ conter le numero de admins """
     admin_count = User.query.filter_by(role="admin").count()
 
     if user.role == "admin" and admin_count <= 1:

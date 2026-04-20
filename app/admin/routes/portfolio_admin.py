@@ -10,6 +10,7 @@ from app.forms.portfolio import PortfolioForm
 from app.utils.image_utils import save_image, delete_image
 from app.decorators import role_required
 
+from flask_login import current_user
 
 
 
@@ -41,7 +42,8 @@ def portfolio_new():
         new_project = Project(
             title=form.title.data,
             description=form.description.data,
-            image=image_filename
+            image=image_filename,
+            author=current_user
         )
 
         db.session.add(new_project)

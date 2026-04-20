@@ -3,6 +3,8 @@
 import os
 from dotenv import load_dotenv
 
+
+""" dotoenv pour importer le pass etc, depuis .env, et pas le monstrer au client """
 load_dotenv()
 
 

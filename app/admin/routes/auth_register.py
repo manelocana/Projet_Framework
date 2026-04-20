@@ -1,7 +1,6 @@
 
 
-
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, redirect, url_for, flash
 from werkzeug.security import generate_password_hash
 from app.extensions import db
 from app.models.user import User
@@ -18,7 +17,11 @@ auth_register_bp = Blueprint('auth_register', __name__)
 @auth_register_bp.route('/register', methods=['GET', 'POST'])
 def register():
 
+    """ on utilise le formulaire WTForms """
     form = RegisterForm()
+
+
+    """ validations de autentication """
 
     if current_user.is_authenticated:
         return redirect(url_for('home.home'))
@@ -36,8 +39,11 @@ def register():
             flash("user exist", "error")
             return redirect(url_for('auth_register.register'))
 
+        """ convertir le pass en hash, pour securité """
         hashed_password = generate_password_hash(password)
 
+        """ ecriture a la base de données """
+        """ JE NE SAIS PAS SI METRE ICI UN TRY-EXCEPT"""
         new_user = User(
             username=username,
             password=hashed_password

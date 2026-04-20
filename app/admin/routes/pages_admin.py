@@ -8,6 +8,8 @@ from app.forms.about import AboutForm
 
 from app.decorators import role_required
 
+from flask_login import current_user
+
 
 
 
@@ -22,9 +24,9 @@ pages_admin_bp = Blueprint('admin_pages', __name__, template_folder='../template
 
 def edit_about():
 
-    about = About.query.first() or About(content="")
+    about = About.query.first()
 
-    if not about.id:
+    if not about:
         about = About(content="")
         db.session.add(about)
         db.session.commit()

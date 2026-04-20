@@ -12,6 +12,6 @@ with app.app_context():
         # Con SQLAlchemy 2.x hay que usar text()
         with db.engine.connect() as conn:
             result = conn.execute(text("SELECT 1"))
-            print("✅ Conexión MySQL OK:", result.fetchone())
+            print("Conexión MySQL OK:", result.fetchone())
     except Exception as e:
         print("❌ Error al conectar con MySQL:", e)
