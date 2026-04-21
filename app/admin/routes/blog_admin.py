@@ -39,19 +39,25 @@ def blog_new():
         image_file = form.image.data
         image_filename = save_image(image_file, 'blog')
 
-        new_post = Post(
-            title=form.title.data,
-            description=form.description.data,
-            image=image_filename,
-            author=current_user
-        )
+        try:
+            new_post = Post(
+                title=form.title.data,
+                description=form.description.data,
+                image=image_filename,
+                author=current_user
+            )
 
-        db.session.add(new_post)
-        db.session.commit()
-                
-        flash("Post added successfully!", "success")
+            db.session.add(new_post)
+            db.session.commit()
 
-        return redirect(url_for('blog_admin.blog_list'))
+            flash("Post added successfully!", "success")
+
+            return redirect(url_for('blog_admin.blog_list'))
+
+        except Exception as e:
+            db.session.rollback()
+            flash('erreur, pas posible ajouter', 'danger')
+            print(str(e))
     
     if form.errors:
         print(form.errors)
@@ -69,20 +75,28 @@ def blog_edit(post_id):
     form = BlogForm(obj=post)
 
     if form.validate_on_submit():
-        """ actualizar datos """
-        post.title = form.title.data
-        post.description = form.description.data
+        try:
+            """ actualizar datos """
+            post.title = form.title.data
+            post.description = form.description.data
 
-        image_file = form.image.data
-        if image_file and image_file.filename:
-            delete_image(post.image, 'blog')
-            post.image = save_image(image_file, 'blog')
+            image_file = form.image.data
 
-        db.session.commit()
+            if image_file and image_file.filename:
+                new_image = save_image(image_file, 'blog')
+                delete_image(post.image, 'blog')
+                post.image = new_image
 
-        flash("Post edit ok successfully!", "success")
+            db.session.commit()
 
-        return redirect(url_for('blog_admin.blog_list'))
+            flash("Post edit ok successfully!", "success")
+
+            return redirect(url_for('blog_admin.blog_list'))
+
+        except Exception as e:
+            db.session.rollback()
+            flash('erreur, pas posible modifier', 'danger')
+            print(str(e))
 
     return render_template('admin/blog/blog_edit.html', form=form, post=post)
 
@@ -93,12 +107,19 @@ def blog_edit(post_id):
 @role_required(["admin"])
 def blog_delete(post_id):
     post = Post.query.get_or_404(post_id)
+    
+    try:
+        delete_image(post.image, 'blog')
 
-    delete_image(post.image, 'blog')
+        db.session.delete(post)
+        db.session.commit()
 
-    db.session.delete(post)
-    db.session.commit()
+        flash("Post delete successfully!", "danger")
 
-    flash("Post delete successfully!", "danger")
+    except Exception as e:
+        db.session.rollback()
+        flash('erreur supprimer post', 'danger')
+        print(str(e))
 
     return redirect(url_for('blog_admin.blog_list'))
+

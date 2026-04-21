@@ -3,7 +3,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from app.models.portfolio import Project
 from app.extensions import db
-from werkzeug.utils import secure_filename
 from flask_login import login_required
 
 from app.forms.portfolio import PortfolioForm
@@ -33,25 +32,32 @@ def portfolio_admin_list():
 @login_required
 @role_required(["admin"])
 def portfolio_new():
+
     form = PortfolioForm()
 
     if form.validate_on_submit():
-        image_file = request.files.get('image')
-        image_filename = save_image(image_file, 'portfolio')
+        try:
+            image_file = form.image.data
+            image_filename = save_image(image_file, 'portfolio')
 
-        new_project = Project(
-            title=form.title.data,
-            description=form.description.data,
-            image=image_filename,
-            author=current_user
-        )
+            new_project = Project(
+                title=form.title.data,
+                description=form.description.data,
+                image=image_filename,
+                author=current_user
+            )
 
-        db.session.add(new_project)
-        db.session.commit()
-                
-        flash("Project added successfully!", "success")
+            db.session.add(new_project)
+            db.session.commit()
+                    
+            flash("Project added successfully!", "success")
 
-        return redirect(url_for('portfolio_admin.portfolio_admin_list'))
+            return redirect(url_for('portfolio_admin.portfolio_admin_list')) 
+
+        except Exception as e:
+            db.session.rollback()
+            flash('erreur, pas posible ajouter un post', 'danger')
+            print(str(e))
     
     if form.errors:
         print(form.errors)
@@ -64,25 +70,35 @@ def portfolio_new():
 @login_required
 @role_required(["admin"])
 def portfolio_edit(project_id):
+
     project = Project.query.get_or_404(project_id)
     """ para que edit tenga los valores ya puestos """
     form = PortfolioForm(obj=project)
 
     if form.validate_on_submit():
         """ actualizar datos """
-        project.title = form.title.data
-        project.description = form.description.data
 
-        image_file = request.files.get('image')
-        if image_file and image_file.filename:
-            delete_image(project.image, 'portfolio')
-            project.image = save_image(image_file, 'portfolio')
+        try:
+            project.title = form.title.data
+            project.description = form.description.data
 
-        db.session.commit()
+            image_file = form.image.data
 
-        flash("Project added successfully!", "success")
+            if image_file and image_file.filename:
+                new_image = save_image(image_file, 'portfolio')
+                delete_image(project.image, 'portfolio')
+                project.image = new_image
 
-        return redirect(url_for('portfolio_admin.portfolio_admin_list'))
+            db.session.commit()
+
+            flash("Project modif success!", "success")
+
+            return redirect(url_for('portfolio_admin.portfolio_admin_list'))
+        
+        except Exception as e:
+            db.session.rollback()
+            flash('erreur, pas posible modifier le portfolio', 'danger')
+            print(str(e))
 
     return render_template('admin/portfolio/portfolio_edit.html', form=form, project=project)
 
@@ -92,13 +108,20 @@ def portfolio_edit(project_id):
 @login_required
 @role_required(["admin"])
 def portfolio_delete(project_id):
+
     project = Project.query.get_or_404(project_id)
 
-    delete_image(project.image, 'portfolio')
+    try:
+        delete_image(project.image, 'portfolio')
 
-    db.session.delete(project)
-    db.session.commit()
+        db.session.delete(project)
+        db.session.commit()
 
-    flash("Project delete successfully!", "danger")
+        flash("Project delete successfully!", "danger")
+
+    except Exception as e:
+        db.session.rollback()
+        flash('erreur al supprimer', 'danger')
+        print(str(e))
 
     return redirect(url_for('portfolio_admin.portfolio_admin_list'))

@@ -43,14 +43,20 @@ def register():
         hashed_password = generate_password_hash(password)
 
         """ ecriture a la base de données """
-        """ JE NE SAIS PAS SI METRE ICI UN TRY-EXCEPT"""
-        new_user = User(
-            username=username,
-            password=hashed_password
-        )
+        """ try-except pour toucher la db """
+        try:
+            new_user = User(
+                username=username,
+                password=hashed_password
+            )
 
-        db.session.add(new_user)
-        db.session.commit()
+            db.session.add(new_user)
+            db.session.commit()
+
+        except Exception as e:
+            db.session.rollback()
+            flash("error", "danger")
+            print(str(e))
 
         flash("user created ok, u can login.", "success")
         return redirect(url_for('auth.login'))

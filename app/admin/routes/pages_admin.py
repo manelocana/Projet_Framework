@@ -27,15 +27,28 @@ def edit_about():
     about = About.query.first()
 
     if not about:
-        about = About(content="")
-        db.session.add(about)
-        db.session.commit()
+        try:
+            about = About(content="")
+            db.session.add(about)
+            db.session.commit()
+        
+        except Exception as e:
+            db.session.rollback()
+            flash('erreur about', 'danger')
+            print(str(e))
 
     form = AboutForm(obj=about)
 
     if form.validate_on_submit():
-        about.content = form.content.data   # --> html ckeditor
-        db.session.commit()
-        return redirect(url_for('pages.pages'))
+
+        try:
+            about.content = form.content.data   # --> html ckeditor
+            db.session.commit()
+            return redirect(url_for('pages.pages'))
+        
+        except Exception as e:
+            db.session.rollback()
+            flash('erreur al modifier', 'danger')
+            print(str(e))
     
-    return render_template('admin/pages/about_edit.html', form=form)
+    return render_template('admin/pages/about_edit.html', form=form, about=about)

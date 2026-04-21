@@ -53,8 +53,13 @@ def delete_user(user_id):
         flash("Cannot delete the last admin.", "danger")
         return redirect(url_for("admin.admin_users"))
 
-    db.session.delete(user)
-    db.session.commit()
+    try:
+        db.session.delete(user)
+        db.session.commit()
+        flash("User deleted successfully.", "success")
 
-    flash("User deleted successfully.", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash('erreur supprimer user', 'danger')
+
     return redirect(url_for("admin.admin_users"))
