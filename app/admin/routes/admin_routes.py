@@ -61,5 +61,6 @@ def delete_user(user_id):
     except Exception as e:
         db.session.rollback()
         flash('erreur supprimer user', 'danger')
+        print(str(e))
 
     return redirect(url_for("admin.admin_users"))
