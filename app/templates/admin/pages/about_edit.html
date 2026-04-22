@@ -19,7 +19,7 @@
 
                 <div class="form-group">
                     {{ form.content.label }}
-                    {{ form.content }}
+                    {{ form.content(class="ckeditor") }}
 
                     {% for error in form.content.errors %}
                     <small class="form-error">{{ error }}</small>

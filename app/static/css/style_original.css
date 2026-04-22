@@ -745,7 +745,8 @@ header a {
     }
 
     .services img {
-        width: 50%;
+        max-width: 50%;
+        height: 700px;
     }
 
     .services h2, 
@@ -784,6 +785,13 @@ header a {
 
     #lets_create .container p {
         padding: 40px;
+    }
+
+
+
+    .about_image {
+        width: 900px;
+        height: 100%;
     }
 
 
