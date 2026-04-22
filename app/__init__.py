@@ -23,11 +23,6 @@ from app.user.routes.user_routes import user_bp
 import pymysql
 
 
-from flask_wtf import CSRFProtect
-# from app.utils.logs_config import setup_logging
-
-
-
 
 pymysql.install_as_MySQLdb()
 
