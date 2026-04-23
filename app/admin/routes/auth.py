@@ -8,6 +8,7 @@ from app.extensions import login_manager
 from urllib.parse import urlparse, urljoin
 from app.forms.auth import LoginForm
 
+from app.extensions import db
 
 
 auth_bp = Blueprint('auth', __name__, template_folder='../templates')
@@ -17,7 +18,7 @@ auth_bp = Blueprint('auth', __name__, template_folder='../templates')
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return db.session.get(User, int(user_id))
 
 
 

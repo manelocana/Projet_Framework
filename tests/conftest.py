@@ -54,7 +54,7 @@ def user(db):
 # Fixture de un post de prueba
 @pytest.fixture
 def post(db, user):
-    p = Post(title="Test Post", description="Holaaaa")
+    p = Post(title="Test Post", description="Holaaaa", user=user)
     db.session.add(p)
     db.session.commit()
     return p

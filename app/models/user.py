@@ -16,6 +16,6 @@ class User(db.Model, UserMixin):
     role = db.Column(db.String(20), server_default='user', nullable=False)
 
     """ relation user avec post/projects """
-    posts = db.relationship('Post', backref='author', lazy=True)
-    projects = db.relationship('Project', backref='author', lazy=True)
+    posts = db.relationship('Post', backref='author', lazy=True, cascade="all, delete-orphan")
+    projects = db.relationship('Project', backref='author', lazy=True, cascade="all, delete-orphan")
     
