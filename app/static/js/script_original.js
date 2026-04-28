@@ -42,3 +42,15 @@ setTimeout(function() {
         flashes.style.display = 'none';
     }
 }, 3000);
+
+
+
+//hamburguer
+
+const hamburger = document.getElementById('hamburger');
+    const nav = document.querySelector('header nav');
+
+    hamburger.addEventListener('click', function () {
+        hamburger.classList.toggle('open');
+        nav.classList.toggle('open');
+    });

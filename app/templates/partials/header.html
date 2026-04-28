@@ -1,13 +1,19 @@
 
 
 <header>
-    <div class="container flex-column">
+    <div class="container flex-column flex-center">
 
         <p class="logo">
             <a href="{{ url_for('home.home') }}">
                 <img src="{{ url_for('static', filename='img/logo_web.jpeg') }}" alt="log_web">
             </a>
         </p>
+
+        <button class="hamburger" id="hamburger" aria-label="Menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         
         <nav>
             <a href="{{ url_for('home.home') }}">HOME</a>
@@ -36,11 +42,6 @@
                 <a href="{{ url_for('user.profile') }}">Profile</a>
             {% endif %}
         </div>
-
-
-        <!-- <div class="search">
-            <a href="mailto:987frisk.agency@mail.com" class="btn">WORK WITH ME</a>
-        </div> -->
        
     </div>
 </header>
