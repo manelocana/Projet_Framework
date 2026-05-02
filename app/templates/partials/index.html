@@ -3,11 +3,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!-- pour le responsive mobile-desktop -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Portfolio Artiste Photographe">
+
+    <!-- seo pour google -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Manel Ocana">
+
+    <!-- pour partager le link -->
+    <meta property="og:title" content="Home frisk agency">
+    <meta property="og:description" content="the home, with all contents">
+    <meta property="og:image" content="image.webp">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" href="favicon.ico">
+
+    <!-- pour mobile -->
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- ameillorer perfonmance de fontaines externes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- eviter contenu repeté -->
+    <!-- <link rel="canonical" href="https://manelocana.github.io/Projet_block_1_frontend/"> -->
 
     <title>{{ title if title else 'Projet Ilaria' }}</title>
 
-    <meta name="description" content="Portfolio Artiste Photographe">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
