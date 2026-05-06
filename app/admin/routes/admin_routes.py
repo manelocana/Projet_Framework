@@ -1,23 +1,32 @@
 
 
+""" modules pour flask """
 from flask import Blueprint, render_template, redirect, url_for, flash
+
+""" authentication avec flask_login """
 from flask_login import login_required, current_user
+
+""" script avec decorateur pour les roles """
 from app.decorators import role_required
 
+""" model et module de mysql """
 from app.models.user import User
 from app.extensions import db
+
+""" wtforms pour le formulaire """
 from app.forms.admin import DeleteForm
 
 
-
+""" instance del blueprint, pour les routes admin """
 admin_bp = Blueprint("admin", __name__, template_folder='../templates', url_prefix='/admin')
 
 
-
+""" route get panel admin """
 @admin_bp.route("/")
 @login_required
 @role_required(["admin"])
 def admin_dashboard():
+    """ render_template (flask) pour afficher directement a html """
     return render_template("admin/administration/dashboard.html")
 
 

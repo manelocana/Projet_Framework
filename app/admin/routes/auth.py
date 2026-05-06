@@ -21,10 +21,13 @@ def load_user(user_id):
     return db.session.get(User, int(user_id))
 
 
-
+""" securite pour URLs """
 def is_safe_url(target):
+    """ url base """
     ref_url = urlparse(request.host_url)
+    """ url + domaine """
     test_url = urlparse(urljoin(request.host_url, target))
+    """ verification de http et domaine """
     return test_url.scheme in ('http', 'https') and ref_url.netloc == test_url.netloc
 
 
@@ -37,8 +40,10 @@ def login():
         username = form.username.data
         password = form.password.data
 
+        """ filtre user dans mysql """
         user = User.query.filter_by(username=username).first()
 
+        """ verifications """
         if user and check_password_hash(user.password, password):
             login_user(user)
 

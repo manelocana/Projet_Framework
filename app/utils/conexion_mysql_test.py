@@ -14,4 +14,4 @@ with app.app_context():
             result = conn.execute(text("SELECT 1"))
             print("Conexión MySQL OK:", result.fetchone())
     except Exception as e:
-        print("❌ Error al conectar con MySQL:", e)
+        print("Error al conectar con MySQL:", e)

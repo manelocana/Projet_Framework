@@ -72,11 +72,12 @@ def portfolio_new():
 def portfolio_edit(project_id):
 
     project = Project.query.get_or_404(project_id)
-    """ para que edit tenga los valores ya puestos """
+
+    """ parametres edit deja de base """
     form = PortfolioForm(obj=project)
 
     if form.validate_on_submit():
-        """ actualizar datos """
+        """ actualizer données """
 
         try:
             project.title = form.title.data

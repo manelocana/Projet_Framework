@@ -7,7 +7,7 @@ from wtforms.validators import DataRequired
 
 
 
-
+""" formulaire avec wtforms , et validations de données """
 class AboutForm(FlaskForm):
     content = TextAreaField('Biography', 
                             validators=[DataRequired()], 
