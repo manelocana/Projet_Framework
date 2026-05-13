@@ -39,16 +39,13 @@ def register():
             flash("user exist", "error")
             return redirect(url_for('auth_register.register'))
 
-        """ convertir le pass en hash, pour securité """
-        hashed_password = generate_password_hash(password)
-
+    
         """ ecriture a la base de données """
         """ try-except pour toucher la db """
         try:
-            new_user = User(
-                username=username,
-                password=hashed_password
-            )
+            new_user = User(username=username)
+
+            new_user.set_password(password)
 
             db.session.add(new_user)
             db.session.commit()

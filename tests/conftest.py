@@ -7,6 +7,17 @@ from app.models.user import User
 from app.models.post import Post
 
 from config import TestConfig
+import uuid
+
+
+@pytest.fixture
+def login(client):
+
+    def do_login(user):
+        with client.session_transaction() as sess:
+            sess["_user_id"] = str(user.id)
+
+    return do_login
 
 
 
@@ -34,19 +45,26 @@ def client(app):
 # cuando modificamos la db
 @pytest.fixture(scope="function")
 def db(app):
-    _db.session.begin_nested()
-    yield _db
-    _db.session.rollback()
 
+    _db.session.begin_nested()
+
+    yield _db
+
+    _db.session.rollback()
 
 
 # Fixture de un usuario de prueba, role=user
 # test de rutas admin
 @pytest.fixture
 def user(db):
-    u = User(username="testuser", password="1234")
+    unique_name = f"testuser_{uuid.uuid4().hex}"
+
+    u = User(username=unique_name)
+    u.set_password("1234")
+
     db.session.add(u)
     db.session.commit()
+
     return u
 
 
@@ -54,7 +72,7 @@ def user(db):
 # Fixture de un post de prueba
 @pytest.fixture
 def post(db, user):
-    p = Post(title="Test Post", description="Holaaaa", user=user)
+    p = Post(title="Test Post", description="testing pour post", author=user)
     db.session.add(p)
     db.session.commit()
     return p
@@ -64,13 +82,16 @@ def post(db, user):
 @pytest.fixture
 def admin_user(db):
 
-    existing = db.session.query(User).filter_by(username="admin").first()
-    if existing:
-        db.session.delete(existing)
-        db.session.commit()
-        
-    u = User(username="admin", password="1234", role="admin")
+    unique_name = f"admin_{uuid.uuid4().hex}"
+
+    u = User(
+        username=unique_name,
+        role="admin"
+    )
+
+    u.set_password("1234")
+
     db.session.add(u)
     db.session.commit()
-    return u
 
+    return u
