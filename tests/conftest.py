@@ -16,8 +16,22 @@ def login(client):
     def do_login(user):
         with client.session_transaction() as sess:
             sess["_user_id"] = str(user.id)
+            sess["_fresh"] = True
 
     return do_login
+
+
+
+
+@pytest.fixture(autouse=True)
+def reset_login_state(app):
+    with app.app_context():
+        from flask import g
+        g.pop('_login_user', None)
+    yield
+    with app.app_context():
+        from flask import g
+        g.pop('_login_user', None)
 
 
 
@@ -38,7 +52,6 @@ def app():
 @pytest.fixture
 def client(app):
     return app.test_client()
-
 
 
 # Fixture de la base de datos (transacciones por test)

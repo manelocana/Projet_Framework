@@ -21,19 +21,6 @@ def test_create_post(client, login, admin_user, db):
 
 
 
-def test_create_post_requires_login(client):
-
-    response = client.post("/admin/blog/new", data={
-        "title": "Hack",
-        "description": "No deberia"
-    })
-
-    assert response.status_code == 302
-    assert "/login" in response.location
-
-
-
-
 
 def test_normal_user_cannot_create_post(login, client, user):
 

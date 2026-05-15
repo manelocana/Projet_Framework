@@ -16,6 +16,9 @@ def role_required(roles):
         @wraps(f)
         def wrapper(*args, **kwargs):
 
+            if not current_user.is_authenticated:
+                return redirect(url_for("auth.login")) 
+
             """ si le role n'est pas autorisé, return http-403 """
             if current_user.role not in roles:
                 return redirect(url_for("home.home"))  # no auth
