@@ -10,6 +10,7 @@ from config import TestConfig
 import uuid
 
 
+""" les fixtures sont methodes global , methodes que on peut utiliser seulement en l'appeler , sans importer """
 @pytest.fixture
 def login(client):
 
@@ -41,21 +42,20 @@ def app():
     app = create_app(TestConfig)
     
     with app.app_context():
-        _db.create_all()  # Crear tablas en memoria
+        _db.create_all()  # Creer tables in memory
         yield app
         _db.session.remove()
-        _db.drop_all()  # Limpiar DB al final
+        _db.drop_all()  # Nettoyer la DB au final
 
 
 
-# Fixture del client de Flask para hacer request
+# Fixture du client Flask pour faire la request
 @pytest.fixture
 def client(app):
     return app.test_client()
 
 
-# Fixture de la base de datos (transacciones por test)
-# cuando modificamos la db
+# Fixture de database (trasnsaccion pour test) quand on modif la database 
 @pytest.fixture(scope="function")
 def db(app):
 
@@ -66,8 +66,8 @@ def db(app):
     _db.session.rollback()
 
 
-# Fixture de un usuario de prueba, role=user
-# test de rutas admin
+# Fixture user, role=user
+# test routes admin
 @pytest.fixture
 def user(db):
     unique_name = f"testuser_{uuid.uuid4().hex}"
@@ -82,7 +82,7 @@ def user(db):
 
 
 
-# Fixture de un post de prueba
+# Fixture pour un post de test
 @pytest.fixture
 def post(db, user):
     p = Post(title="Test Post", description="testing pour post", author=user)
